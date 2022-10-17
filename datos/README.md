@@ -1,0 +1,2 @@
+Los datos que usaremos en este proyecto fueron sacados de <https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset?resource=download>.
+Principalmente usaremos las bases de datos "data.csv", "data_by_genres.csv" y "data_by_year.csv".
