@@ -4,6 +4,7 @@ format: html
 editor: visual
 ---
 
+<<<<<<< HEAD
 La música ha sido parte fundamental de la historia de la humanidad. "La música es una de las expresiones
 creativas más íntimas del ser, ya que forma parte del quehacer cotidiano de
 cualquier grupo humano tanto por su goce estético como por su carácter
@@ -36,3 +37,6 @@ a través de tablas y gráficos, enfocándonos principalmente en las
 reproducciones y su relación con las demás variables. Para finalizar, la cuarta
 parte será una conclusión, en la que clarificaremos cuales son las variables
 que más influyen en el posible éxito de una canción.
+=======
+## Introduccion
+>>>>>>> 22cca2baa33d0484980b58a3a2a72623370c2119
