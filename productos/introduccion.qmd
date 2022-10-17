@@ -4,12 +4,12 @@ format: html
 editor: visual
 ---
 
-La música ha sido parte fundamental de la historia de la humanidad. \"La música es una de las expresiones
+La música ha sido parte fundamental de la historia de la humanidad. "La música es una de las expresiones
 creativas más íntimas del ser, ya que forma parte del quehacer cotidiano de
 cualquier grupo humano tanto por su goce estético como por su carácter
 funcional y social. La música nos identifica como seres, como grupos y como
 cultura, tanto por las raíces identitarias como por la locación geográfica y
-épocas históricas.\" (Angel, Camus y Mansilla, 2008: 18).
+épocas históricas." (Angel, Camus y Mansilla, 2008: 18).
 
 Desde que la
 existe la industria musical se han tratado de crear canciones que generen gran
@@ -22,7 +22,7 @@ fueron exitosas.
 
 Para entender
 mejor como han sido las tendencias musicales de los últimos años haremos un análisis
-de una base de datos de \"Spotify\", con el fin de ver cuales son los factores
+de una base de datos de "Spotify", con el fin de ver cuales son los factores
 que hacen que una canción sea popular, o que al menos aumentan las posibilidades
 de que lo sea.
 
