@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+## Introducción
+
 La música ha sido parte fundamental de la historia de la humanidad. "La música es una de las expresiones creativas más íntimas del ser, ya que forma parte del quehacer cotidiano de cualquier grupo humano tanto por su goce estético como por su carácter funcional y social. La música nos identifica como seres, como grupos y como cultura, tanto por las raíces identitarias como por la locación geográfica y épocas históricas." (Angel, Camus y Mansilla, 2008: 18).
 
 Desde que la existe la industria musical se han tratado de crear canciones que generen gran impacto en la sociedad, pues esto se podría traducir en beneficios monetarios en un periodo de tiempo cercano al estreno de la canción. Por esto puede ser importante para alguna empresa discográfica saber cómo hacer alguna canción exitosa, por lo tanto, podría ser relevante para estas compañías conocer cuales son las tendencias musicales, y los patrones que se repiten en las canciones que ya fueron exitosas.
