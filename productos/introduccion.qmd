@@ -39,11 +39,20 @@ En este informe tendremos cuatro secciones. La primera parte será para explicar
 
 Figura 1
 
+```{r echo=FALSE, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(here)
+
+datos=read_csv(here::here("datos/data.csv"))
+```
+
 ```{r}
-datos
 datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
   geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
   labs(title="Número de canciones según su popularidad",
        x="Popularidad", y="Número de Canciones")
+grafico1
 ```
