@@ -48,13 +48,17 @@ library(here)
 datos=read_csv(here::here("datos/data.csv"))
 ```
 
-```{r }
+Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:
+
+```{r echo=FALSE}
 datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
   geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
-  labs(title="Número de canciones según su popularidad",
+  labs(title="Figura 2:Número de canciones según su popularidad",
        x="Popularidad", y="Número de Canciones")+
   geom_vline(xintercept = 74,linetype="dashed",color="black")+
-  annotate("text", x = 89, y = 25000, label = "Canciones a estudiar")
+  annotate("text", x = 91, y = 25000, label = "Canciones a estudiar")
 grafico1
 ```
+
+Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.
