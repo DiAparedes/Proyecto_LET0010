@@ -48,11 +48,13 @@ library(here)
 datos=read_csv(here::here("datos/data.csv"))
 ```
 
-```{r}
+```{r }
 datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
   geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
   labs(title="Número de canciones según su popularidad",
-       x="Popularidad", y="Número de Canciones")
+       x="Popularidad", y="Número de Canciones")+
+  geom_vline(xintercept = 74,linetype="dashed",color="black")+
+  annotate("text", x = 89, y = 25000, label = "Canciones a estudiar")
 grafico1
 ```
