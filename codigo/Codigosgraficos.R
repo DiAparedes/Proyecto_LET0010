@@ -25,20 +25,16 @@ a=c(a,cor(datos_numericos$popularity,datos_numericos[i]))
 }  
 
 a
-  
-hist(datos$popularity)
 
-grafico1= datos %>% 
-  ggplot(popularity)+
-  geom_histogram(aes(x=))
+
   
 
 datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
-  geom_histogram(aes(x=datos$popularity, fill=Popularidad)+
-  labs(title=" ")
-                                
-  )
+  geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
+  labs(title="Número de canciones según su popularidad",
+       x="Popularidad", y="Número de Canciones")
+
 
 datosye=data.frame(datos$year,datos$explicit)
 summary(datosye)
@@ -55,5 +51,6 @@ grafico2=datosye2 %>%
        x="Año",
        y="Cantidad de canciones")
 
-  
+
+class(datos$artists)
 

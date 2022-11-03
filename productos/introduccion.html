@@ -63,98 +63,121 @@ ul.task-list{list-style: none;}
 <p>figura 1</p>
 <table class="table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 28%">
+<col style="width: 24%">
+<col style="width: 46%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Col1</th>
-<th>Col2</th>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>name</code></td>
+<td>caracter</td>
 <td>Nombre de la canción</td>
 </tr>
 <tr class="even">
 <td><code>id</code></td>
+<td>caracter</td>
 <td>ID de la canción en Spotify</td>
 </tr>
 <tr class="odd">
-<td><code>artist</code></td>
+<td><code>artists</code></td>
+<td>caracter</td>
 <td>Nombre del/los interpretes</td>
 </tr>
 <tr class="even">
 <td><code>genres</code> *</td>
+<td>caracter</td>
 <td>Gnero de la cancion</td>
 </tr>
 <tr class="odd">
 <td><code>year</code></td>
+<td>numérica</td>
 <td>Año de lanzamiento</td>
 </tr>
 <tr class="even">
 <td><code>release_date</code></td>
+<td>caracter</td>
 <td>Fecha de lanzamientos (Año-Mes-Día)</td>
 </tr>
 <tr class="odd">
 <td><code>valence</code></td>
+<td>numérica</td>
 <td>Que tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1</td>
 </tr>
 <tr class="even">
 <td><code>acousticness</code></td>
+<td>numérica</td>
 <td>Que tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0</td>
 </tr>
 <tr class="odd">
 <td><code>danceability</code></td>
+<td>numérica</td>
 <td>Que tan bailable es una canción, más bailable cerca de 1, menos bailable cerca de 0</td>
 </tr>
 <tr class="even">
 <td><code>duration_ms</code></td>
+<td>numérica</td>
 <td>Duración en milisegundos</td>
 </tr>
 <tr class="odd">
 <td><code>energy</code></td>
+<td>numérica</td>
 <td>Intencidad perceptual de la canción</td>
 </tr>
 <tr class="even">
 <td><code>explicit</code></td>
+<td>numérica</td>
 <td>La canción tiene contenido explicito (Si=1,No=0)</td>
 </tr>
 <tr class="odd">
 <td><code>instrumentalness</code></td>
+<td>numérica</td>
 <td>Cantidad de voces en la canción, más cerca está de 1.0, más instrumental</td>
 </tr>
 <tr class="even">
 <td><code>key</code></td>
+<td>numérica</td>
 <td>Tono de la canción</td>
 </tr>
 <tr class="odd">
 <td><code>liveness</code></td>
+<td>numérica</td>
 <td>Probabilidad de que la canción haya sido grabada en vivo</td>
 </tr>
 <tr class="even">
 <td><code>loudness</code></td>
+<td>numérica</td>
 <td>Volumen de la canción</td>
 </tr>
 <tr class="odd">
 <td><code>mode</code></td>
+<td>numérica</td>
 <td>Canción considerada como prioritaria por el artista o sello discográfico, se suele publicitar y recomendar más (Si=1, No=0)</td>
 </tr>
 <tr class="even">
 <td><code>popularity</code></td>
+<td>numérica</td>
 <td>Que tan popular es la canción</td>
 </tr>
 <tr class="odd">
 <td><code>speechiness</code></td>
+<td>numérica</td>
 <td>Proporcion de tiempo que ocupan palabras habladas o cantadas en la canción</td>
 </tr>
 <tr class="even">
 <td><code>tempo</code></td>
+<td>numérica</td>
 <td>Tempo de la canción (velocidad)</td>
 </tr>
 </tbody>
 </table>
+<p>*: variable solo se encuentra en la base de datos <code>data_by_genres</code></p>
 </section>
 
 </main>

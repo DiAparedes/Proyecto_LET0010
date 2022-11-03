@@ -14,27 +14,36 @@ Para entender mejor como han sido las tendencias musicales de los últimos años
 
 En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. En la segunda parte dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.
 
-figura 1
+| Variable           | Tipo     | Descripción                                                                                                                                            |
+|----------------------|-------------------|------------------------------------|
+| `name`             | caracter | Nombre de la canción                                                                                                                                   |
+| `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
+| `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
+| `genres`           | caracter | Género de la cancion (Variable única de `data_by_genres.csv`)                                                                                          |
+| `year`             | numérica | Año de lanzamiento                                                                                                                                     |
+| `release_date`     | caracter | Fecha de lanzamientos (Año-Mes-Día)                                                                                                                    |
+| `valence`          | numérica | Que tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1                                                                |
+| `acousticness`     | numérica | Que tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0 |
+| `danceability`     | numérica | Que tan bailable es una canción, más bailable cerca de 1, menos bailable cerca de 0                                                                    |
+| `duration_ms`      | numérica | Duración en milisegundos                                                                                                                               |
+| `energy`           | numérica | Intencidad perceptual de la canción                                                                                                                    |
+| `explicit`         | numérica | La canción tiene contenido explicito (Si=1,No=0)                                                                                                       |
+| `instrumentalness` | numérica | Cantidad de voces en la canción, más cerca está de 1.0, más instrumental                                                                               |
+| `key`              | numérica | Tono de la canción                                                                                                                                     |
+| `liveness`         | numérica | Probabilidad de que la canción haya sido grabada en vivo                                                                                               |
+| `loudness`         | numérica | Volumen de la canción                                                                                                                                  |
+| `mode`             | numérica | Canción considerada como prioritaria por el artista o sello discográfico, se suele publicitar y recomendar más (Si=1, No=0)                            |
+| `popularity`       | numérica | Que tan popular es la canción                                                                                                                          |
+| `speechiness`      | numérica | Proporcion de tiempo que ocupan palabras habladas o cantadas en la canción                                                                             |
+| `tempo`            | numérica | Tempo de la canción (velocidad)                                                                                                                        |
 
-| Col1               | Col2                                                                                                                                                   |
-|------------------------------------|------------------------------------|
-| `name`             | Nombre de la canción                                                                                                                                   |
-| `id`               | ID de la canción en Spotify                                                                                                                            |
-| `artist`           | Nombre del/los interpretes                                                                                                                             |
-| `genres` \*        | Gnero de la cancion                                                                                                                                    |
-| `year`             | Año de lanzamiento                                                                                                                                     |
-| `release_date`     | Fecha de lanzamientos (Año-Mes-Día)                                                                                                                    |
-| `valence`          | Que tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1                                                                |
-| `acousticness`     | Que tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0 |
-| `danceability`     | Que tan bailable es una canción, más bailable cerca de 1, menos bailable cerca de 0                                                                    |
-| `duration_ms`      | Duración en milisegundos                                                                                                                               |
-| `energy`           | Intencidad perceptual de la canción                                                                                                                    |
-| `explicit`         | La canción tiene contenido explicito (Si=1,No=0)                                                                                                       |
-| `instrumentalness` | Cantidad de voces en la canción, más cerca está de 1.0, más instrumental                                                                               |
-| `key`              | Tono de la canción                                                                                                                                     |
-| `liveness`         | Probabilidad de que la canción haya sido grabada en vivo                                                                                               |
-| `loudness`         | Volumen de la canción                                                                                                                                  |
-| `mode`             | Canción considerada como prioritaria por el artista o sello discográfico, se suele publicitar y recomendar más (Si=1, No=0)                            |
-| `popularity`       | Que tan popular es la canción                                                                                                                          |
-| `speechiness`      | Proporcion de tiempo que ocupan palabras habladas o cantadas en la canción                                                                             |
-| `tempo`            | Tempo de la canción (velocidad)                                                                                                                        |
+Figura 1
+
+```{r}
+datos
+datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
+grafico1=ggplot(data = datos)+
+  geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
+  labs(title="Número de canciones según su popularidad",
+       x="Popularidad", y="Número de Canciones")
+```
