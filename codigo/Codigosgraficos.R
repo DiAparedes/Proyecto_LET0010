@@ -55,6 +55,38 @@ grafico2=datosye2 %>%
 
 #codigo grafico 3, a arreglar en un futuro
 
-grafico3=qqplot(datos$year,datos$popularity,main="Popularidad de las canciones cada año",xlab="Año",ylab="popularidad de la canción")
+grafico3=qqplot(datos$year,datos$popularity,main="Popularidad de las canciones cada año",
+                xlab="Año",
+                ylab="popularidad de la canción")
   
 
+####
+library(stringr)
+
+datos_a_estudiar1=datos[datos$popularity>75, ]
+
+artist2=datos_a_estudiar1$artists
+
+artist3=str_remove_all(artist2,"(')")
+
+artist4=artist3 %>% str_replace_all("\\[|\\]","")
+
+
+as.list(strsplit(artist4,",")[])
+
+numero_de_artistas=c()
+artist5=c()
+
+for(i in 1:length(datos_a_estudiar1$artists)){
+  artist5=c(artist5,as.list(strsplit(artist4,",")[[i]]))
+}
+
+
+for(i in 1:length(datos_a_estudiar1$artists)){
+  numero_de_artistas=c(numero_de_artistas,length(as.list(strsplit(artist4,",")[[i]])))
+}
+
+length(as.list(strsplit(artist4,",")[[1]]))
+
+
+hist(numero_de_artistas)
