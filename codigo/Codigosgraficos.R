@@ -10,7 +10,7 @@ library(gtsummary)
 datos=read_csv("datos/data.csv")
 datos_por_año=read_csv("datos/data_by_year.csv")
 datos_por_genero=read_csv("datos/data_by_genres.csv")
-datos_por_artista=read_csv("datos/data_by_artist.csv")
+
 
 datos_numericos=datos[,c(-4,-9,-15,-17)]
 
