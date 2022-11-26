@@ -10,7 +10,7 @@ library(gtsummary)
 datos=read_csv("datos/data.csv")
 datos_por_año=read_csv("datos/data_by_year.csv")
 datos_por_genero=read_csv("datos/data_by_genres.csv")
-
+datos_por_artista=read_csv("datos/data_by_artist.csv")
 
 datos_numericos=datos[,c(-4,-9,-15,-17)]
 
@@ -140,6 +140,58 @@ dakiti=data.frame(cancion_mas_popular)[,-20]
 dakiti %>%
   gt()
 
- 
+
+which(datos_por_artista$artists=="Bad Bunny")
+
+plot(datos_a_estudiar1_numericos$popularity,datos_a_estudiar1)
+
+class(plot(datos_a_estudiar1_numericos))
+
+
+aa=data.frame(datos_por_artista[2026,])
+
+
+artista_principal=c()
+
+for(i in 1:1736){
+  artista_principal=c(artista_principal,artist_list[[i]][1])
+}
+
+artista_principal
+
+
+datos_a_estudiar1$mainartist=artista_principal
+
+
+mas11=datos_a_estudiar1 %>% 
+  slice_max(popularity,n=12)
+
+
+mas12=unique(mas11[23])
+mas13=sapply(mas12,head,n=10)
+
+numero_de_canciones=c()
+
+for(i in 1:10){
+numero_de_canciones=c(numero_de_canciones,length(which(datos_a_estudiar1$mainartist==mas13[i,])))
+}
+
+
+
+
+canyncan=data.frame(mas13,numero_de_canciones)
+canyncan %>% 
+  gt() %>% 
+  summary_rows(
+    columns = numero_de_canciones,
+    fns = list(total="sum")
+  )
+
+
+
+
+
+
+
 
 
