@@ -85,8 +85,61 @@ for(i in 1:length(datos_a_estudiar1$artists)){
 for(i in 1:length(datos_a_estudiar1$artists)){
   numero_de_artistas=c(numero_de_artistas,length(as.list(strsplit(artist4,",")[[i]])))
 }
+datos_a_estudiar1$numero_de_artistas=numero_de_artistas
 
-length(as.list(strsplit(artist4,",")[[1]]))
+as.list(strsplit(artist4,","))
+
+artist_list=as.list(strsplit(artist4,","))
+
+datos_a_estudiar1$artistslist=artist_list
+datos
+
+library(gt)
+library(gtsummary)
+
+Correlación=c()
+
+for(i in 1:16){
+  
+  Correlación=c(Correlación,cor(datos_a_estudiar1_numericos$popularity,datos_a_estudiar1_numericos[i]))
+  
+}  
+Correlación
+
+datos_a_estudiar1=data.frame(datos_a_estudiar1,numero_de_artistas)
+
+datos_a_estudiar1_numericos=datos_a_estudiar1[,c(-4,-9,-15,-17,-20,-21)]
+cor_var=data.frame(variable=names(datos_a_estudiar1_numericos),Correlación)
+
+names(datos_a_estudiar1)
 
 
-hist(numero_de_artistas)
+qqplot(datos_a_estudiar1$acousticness,datos_a_estudiar1$popularity,main="Popularidad de las canciones cada año",
+       xlab="Año",
+       ylab="popularidad de la canción")
+
+plot(datos_a_estudiar1$valence,datos_a_estudiar1$popularity)
+
+
+library(dplyr)
+library(tidyr)
+##tablas
+
+cor_var %>%#al anexo
+  gt()
+
+
+
+###
+which(datos$popularity==100)
+#valores cancion mas popular
+cancion_mas_popular=datos[19612,]
+dakiti=data.frame(cancion_mas_popular)[,-20]
+
+
+dakiti %>%
+  gt()
+
+ 
+
+
