@@ -14,8 +14,26 @@ Para entender mejor como han sido las tendencias musicales de los últimos años
 
 En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. En la segunda parte dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.
 
+## Contexto
+
+La mayoria de las variables numéricas que miden aspectos tecnicos de una canción se obtuvieron por medio de algoritmos fueron hechos para medir este tipo de información.
+
+La variable `explicit` en "Spotify" se aplica a una canción que tiene:
+
+-   Lenguaje fuerte
+
+-   Imagenes(Portada) o referencias a violencia fisica o mental
+
+-   Referencias o imagenes sexuales
+
+-   Racismo, homofobia, misoginia o cualquier mensaje o comportamiento que se pueda considerar discriminatorio
+
+-   Comportamiento peligroso o criminal que podria incluso ser "glamorizado" o incentivar la imitación de dichas conductas
+
+La variable `mode` hace referencia a
+
 | Variable           | Tipo     | Descripción                                                                                                                                            |
-|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-----------|-----------|---------------------------------------------------|
 | `name`             | caracter | Nombre de la canción                                                                                                                                   |
 | `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
 | `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
@@ -62,3 +80,6 @@ grafico1
 ```
 
 Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.
+
+\
+
