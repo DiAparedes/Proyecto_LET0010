@@ -30,18 +30,18 @@ La variable `explicit` en "Spotify" se aplica a una canción que tiene:
 
 -   Comportamiento peligroso o criminal que podria incluso ser "glamorizado" o incentivar la imitación de dichas conductas
 
-La variable `mode` hace referencia a
+Generalmente esta variable con fines de restricción parental.
 
 | Variable           | Tipo     | Descripción                                                                                                                                            |
-|-----------|-----------|---------------------------------------------------|
+|--------------|--------------|--------------------------------------------|
 | `name`             | caracter | Nombre de la canción                                                                                                                                   |
 | `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
 | `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
 | `genres`           | caracter | Género de la cancion (Variable única de `data_by_genres.csv`)                                                                                          |
 | `year`             | numérica | Año de lanzamiento                                                                                                                                     |
 | `release_date`     | caracter | Fecha de lanzamientos (Año-Mes-Día)                                                                                                                    |
-| `valence`          | numérica | Que tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1                                                                |
-| `acousticness`     | numérica | Que tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0 |
+| `valence`          | numérica | Qué tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1                                                                |
+| `acousticness`     | numérica | Qué tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0 |
 | `danceability`     | numérica | Que tan bailable es una canción, más bailable cerca de 1, menos bailable cerca de 0                                                                    |
 | `duration_ms`      | numérica | Duración en milisegundos                                                                                                                               |
 | `energy`           | numérica | Intencidad perceptual de la canción                                                                                                                    |
@@ -50,9 +50,9 @@ La variable `mode` hace referencia a
 | `key`              | numérica | Tono de la canción                                                                                                                                     |
 | `liveness`         | numérica | Probabilidad de que la canción haya sido grabada en vivo                                                                                               |
 | `loudness`         | numérica | Volumen de la canción                                                                                                                                  |
-| `mode`             | numérica | Canción considerada como prioritaria por el artista o sello discográfico, se suele publicitar y recomendar más (Si=1, No=0)                            |
-| `popularity`       | numérica | Que tan popular es la canción                                                                                                                          |
-| `speechiness`      | numérica | Proporcion de tiempo que ocupan palabras habladas o cantadas en la canción                                                                             |
+| `mode`             | numérica | Tonalidad mayor si es 1, tonalidad menor si es 0                                                                                                       |
+| `popularity`       | numérica | Qué tan popular es la canción                                                                                                                          |
+| `speechiness`      | numérica | Proporción de tiempo que ocupan palabras habladas o cantadas en la canción                                                                             |
 | `tempo`            | numérica | Tempo de la canción (velocidad)                                                                                                                        |
 
 Figura 1
@@ -82,4 +82,4 @@ grafico1
 Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.
 
 \
-
+Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).

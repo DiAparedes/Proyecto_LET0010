@@ -60,11 +60,24 @@ ul.task-list{list-style: none;}
 <p>Desde que la existe la industria musical se han tratado de crear canciones que generen gran impacto en la sociedad, pues esto se podría traducir en beneficios monetarios en un periodo de tiempo cercano al estreno de la canción. Por esto puede ser importante para alguna empresa discográfica saber cómo hacer alguna canción exitosa, por lo tanto, podría ser relevante para estas compañías conocer cuales son las tendencias musicales, y los patrones que se repiten en las canciones que ya fueron exitosas.</p>
 <p>Para entender mejor como han sido las tendencias musicales de los últimos años haremos un análisis de una base de datos de “Spotify”, con el fin de ver cuales son los factores que hacen que una canción sea popular, o que al menos aumentan las posibilidades de que lo sea.</p>
 <p>En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. En la segunda parte dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.</p>
+</section>
+<section id="contexto" class="level2">
+<h2 class="anchored" data-anchor-id="contexto">Contexto</h2>
+<p>La mayoria de las variables numéricas que miden aspectos tecnicos de una canción se obtuvieron por medio de algoritmos fueron hechos para medir este tipo de información.</p>
+<p>La variable <code>explicit</code> en “Spotify” se aplica a una canción que tiene:</p>
+<ul>
+<li><p>Lenguaje fuerte</p></li>
+<li><p>Imagenes(Portada) o referencias a violencia fisica o mental</p></li>
+<li><p>Referencias o imagenes sexuales</p></li>
+<li><p>Racismo, homofobia, misoginia o cualquier mensaje o comportamiento que se pueda considerar discriminatorio</p></li>
+<li><p>Comportamiento peligroso o criminal que podria incluso ser “glamorizado” o incentivar la imitación de dichas conductas</p></li>
+</ul>
+<p>Generalmente esta variable con fines de restricción parental.</p>
 <table class="table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 24%">
-<col style="width: 46%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -107,12 +120,12 @@ ul.task-list{list-style: none;}
 <tr class="odd">
 <td><code>valence</code></td>
 <td>numérica</td>
-<td>Que tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1</td>
+<td>Qué tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1</td>
 </tr>
 <tr class="even">
 <td><code>acousticness</code></td>
 <td>numérica</td>
-<td>Que tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0</td>
+<td>Qué tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0</td>
 </tr>
 <tr class="odd">
 <td><code>danceability</code></td>
@@ -157,17 +170,17 @@ ul.task-list{list-style: none;}
 <tr class="odd">
 <td><code>mode</code></td>
 <td>numérica</td>
-<td>Canción considerada como prioritaria por el artista o sello discográfico, se suele publicitar y recomendar más (Si=1, No=0)</td>
+<td>Tonalidad mayor si es 1, tonalidad menor si es 0</td>
 </tr>
 <tr class="even">
 <td><code>popularity</code></td>
 <td>numérica</td>
-<td>Que tan popular es la canción</td>
+<td>Qué tan popular es la canción</td>
 </tr>
 <tr class="odd">
 <td><code>speechiness</code></td>
 <td>numérica</td>
-<td>Proporcion de tiempo que ocupan palabras habladas o cantadas en la canción</td>
+<td>Proporción de tiempo que ocupan palabras habladas o cantadas en la canción</td>
 </tr>
 <tr class="even">
 <td><code>tempo</code></td>
@@ -184,6 +197,8 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 <p>Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.</p>
+<p><br>
+Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).</p>
 </section>
 
 </main>
