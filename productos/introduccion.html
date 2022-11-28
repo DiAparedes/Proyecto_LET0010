@@ -42,6 +42,7 @@ ul.task-list{list-style: none;}
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
   <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
   </ul>
 </nav>
 </div>
@@ -204,55 +205,76 @@ ul.task-list{list-style: none;}
 </tbody>
 </table>
 <p>Figura 1</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-baiporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 1: Bailabilidad promedio por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-baiporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del</p>
 <p>Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subconj" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 1: Canciones populares y no populares</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 2: Canciones populares y no populares</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-subconj-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.</p>
-<p><br>
-Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).</p>
+<p>decir que es el equivalente al 1% de los artistas, que según un diario se llego a que este es el porcentaje de interpretes que se lleva la mayor proporcion de las ganancias en la industrial musical, en base a este dato, se decidio buscar en qué valor de la variable <code>popularity</code> estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada.</p>
+<p>Con la idea de ver cuales son las variables qué más influyen en la popularidad de una canción se ajustó un modelo de regresión lineal (anexo), a partir del cual se llego a que los aspectos que más afectan a la popularidad de una canción son, en orden descendente, la duranción, la bailabilidad, la instrumentalidad, la energia, el volumen y el número de interpretes.</p>
+<p>Por lo tanto, vamos a ver como se comportan las variables asociadas a los aspectos antes mencionados, en el 1% más popular y lo compararemos con una muestra aleatoria de igual tamaño de la base de datos completa, para ver cuales son las diferencias entre las canciones más populares y el resto de estas.</p>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>En este apartado todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.</p>
+<p>Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura #:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-durs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 2: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 3: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-durs-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Vemos que las canciones mas populares concentran su duranción en torno a los 200 segundos, unos 3 minutos y medio, pero suelen alejarce de manera mas “controlada”, en cambio a nivel general, a pesar de la duración esta concentrada practicamente en el mismo rango de segundos, llegando incluso a que la proporción de canciones que duran casi lo mismo es más o menos el doble, la duración de las canciones se va de manera mas agresiva hacia los extremos, de hecho hay varias piezas que se acercan a la media hora de duración.</p>
+<p>La siguiente variable es la bailabilidad, que como vimos antes ha ido en incremento—</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-dance" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 3: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 4: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-dance-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>La distribución es casi la misma, tal vez hay una leve inclinación hacia el 1, maýor bailabilidad, en las canciones mas populares, junto con esto, tambien podemos ver que casi no hay canciones con menos de un 0.25, pero ademas de eso, las diferencias son practicamente inexistente.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-inst" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 4: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 5: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-inst-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Nuevamente vemos una diferencia minima,</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-energy" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 5: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 6: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-energy-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -262,7 +284,7 @@ Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la 
 <div class="cell-output-display">
 <div id="fig-canciones-pop-loud" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 6: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 7: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-loud-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -272,7 +294,7 @@ Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la 
 <div class="cell-output-display">
 <div id="fig-canciones-pop-Numart" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 7: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 8: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-Numart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -282,7 +304,7 @@ Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la 
 <div class="cell-output-display">
 <div id="fig-canciones-pop-feat" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 8: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 9: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-feat-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>

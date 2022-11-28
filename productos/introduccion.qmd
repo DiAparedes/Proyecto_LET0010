@@ -7,7 +7,7 @@ format:
     toc-location: left
     fig-cap-location: top
     
-lang: "es"    
+lang: "es" 
 editor: visual
 ---
 
@@ -83,6 +83,8 @@ library(gridExtra)
 
 datos=read_csv(here::here("datos/data.csv"))
 
+datos_por_año=read_csv(here::here("datos/data_by_year.csv"))
+
 datos_a_estudiar1=read_csv(here::here("datos/datos_a_estudiar1.csv"))
 
 muestra_datos=read_csv(here::here("datos/muestra_datos.csv"))
@@ -93,6 +95,23 @@ cantft=read_csv(here::here("datos/feat.csv"))
 cantftM=read_csv(here::here("datos/featM.csv"))
 
 ```
+
+```{r echo=FALSE}
+#| fig-cap: "Bailabilidad promedio por año"
+#| label: fig-baiporaño
+
+
+grafby=datos_por_año %>% 
+  ggplot(aes(year,danceability))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+       x="Año",
+       y="Bailabilidad")
+grafby
+```
+
+Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del
 
 Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:
 
@@ -114,8 +133,17 @@ grafico1
 
 Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.
 
-\
-Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).
+decir que es el equivalente al 1% de los artistas, que según un diario se llego a que este es el porcentaje de interpretes que se lleva la mayor proporcion de las ganancias en la industrial musical, en base a este dato, se decidio buscar en qué valor de la variable `popularity` estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada.
+
+Con la idea de ver cuales son las variables qué más influyen en la popularidad de una canción se ajustó un modelo de regresión lineal (anexo), a partir del cual se llego a que los aspectos que más afectan a la popularidad de una canción son, en orden descendente, la duranción, la bailabilidad, la instrumentalidad, la energia, el volumen y el número de interpretes.
+
+Por lo tanto, vamos a ver como se comportan las variables asociadas a los aspectos antes mencionados, en el 1% más popular y lo compararemos con una muestra aleatoria de igual tamaño de la base de datos completa, para ver cuales son las diferencias entre las canciones más populares y el resto de estas.
+
+## Resultados
+
+En este apartado todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.
+
+Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura #:
 
 ```{r echo=FALSE}
 #| fig-cap: "Duranción en segundos de canciones populares y muestra de las otras canciones"
@@ -138,6 +166,10 @@ grafico42=ggplot(data=muestra_datos)+
 graf4=grid.arrange(grafico4,grafico42,ncol=2)
 
 ```
+
+Vemos que las canciones mas populares concentran su duranción en torno a los 200 segundos, unos 3 minutos y medio, pero suelen alejarce de manera mas "controlada", en cambio a nivel general, a pesar de la duración esta concentrada practicamente en el mismo rango de segundos, llegando incluso a que la proporción de canciones que duran casi lo mismo es más o menos el doble, la duración de las canciones se va de manera mas agresiva hacia los extremos, de hecho hay varias piezas que se acercan a la media hora de duración.
+
+La siguiente variable es la bailabilidad, que como vimos antes ha ido en incremento---
 
 ```{r echo=FALSE}
 #| fig-cap: "Bailabilidad de canciones populares y muestra de las otras canciones"
@@ -162,6 +194,8 @@ grafico52=ggplot(data=muestra_datos)+
 grid.arrange(grafico5,grafico52,ncol=2)
 
 ```
+
+La distribución es casi la misma, tal vez hay una leve inclinación hacia el 1, maýor bailabilidad, en las canciones mas populares, junto con esto, tambien podemos ver que casi no hay canciones con menos de un 0.25, pero ademas de eso, las diferencias son practicamente inexistente.
 
 ```{r echo=FALSE}
 #| fig-cap: "Instrumentalidad de canciones populares y muestra de las otras canciones"
@@ -188,6 +222,8 @@ grafico62=ggplot(data=muestra_datos)+
 grid.arrange(grafico6,grafico62,ncol=2)
 
 ```
+
+Nuevamente vemos una diferencia minima,
 
 ```{r echo=FALSE}
 #| fig-cap: "Energia de canciones populares y muestra de las otras canciones"

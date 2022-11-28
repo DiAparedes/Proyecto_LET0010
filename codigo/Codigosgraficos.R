@@ -40,6 +40,7 @@ grafico1=ggplot(data = datos)+
   annotate("text", x = 87, y = 25000, label = "Canciones a estudiar")
 
 #codigo grafico 2
+
 datosye=data.frame(datos$year,datos$explicit)
 
 
@@ -55,6 +56,15 @@ grafico2=datosye2 %>%
        x="Año",
        y="Cantidad de canciones")
 
+##grafico bailabilidad por año,
+
+grafby=datos_por_año %>% 
+  ggplot(aes(year,danceability))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+       x="Año",
+       y="Bailabilidad")
 
 #codigo grafico 3, a arreglar en un futuro
 
