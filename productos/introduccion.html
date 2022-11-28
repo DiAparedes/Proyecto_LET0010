@@ -42,7 +42,9 @@ ul.task-list{list-style: none;}
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
   <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
   <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
+  <li><a href="#resultados-1" id="toc-resultados-1" class="nav-link" data-scroll-target="#resultados-1">Resultados</a></li>
   </ul>
 </nav>
 </div>
@@ -85,14 +87,16 @@ ul.task-list{list-style: none;}
 <li><p>Comportamiento peligroso o criminal que podria incluso ser “glamorizado” o incentivar la imitación de dichas conductas</p></li>
 </ul>
 <p>Generalmente esta variable con fines de restricción parental.</p>
-<div class="cell">
-
-</div>
+<p>La variable <code>loudness</code>, hace referencia a un resuldato del proceso de mezcla de una canción, ya que durante la producción de una pieza musical, las diferentes voces son grabadas con un volumen natural y luego se suele bajar la intensidad del sonido para destacar algunas cosas sobre otras, por eso este aspecto toma valores negativos.</p>
+</section>
+<section id="datos" class="level2">
+<h2 class="anchored" data-anchor-id="datos">Datos</h2>
+<p>Los datos corresponden a una base de datos de Spotify y fueron recogidos durante el mes de noviembre del año 2020. Las variables que se encuentran en esta base de datos se presentan en la siguiente tabla:</p>
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 52%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -118,93 +122,139 @@ ul.task-list{list-style: none;}
 <td>Nombre del/los interpretes</td>
 </tr>
 <tr class="even">
-<td><code>genres</code></td>
-<td>caracter</td>
-<td>Género de la cancion (Variable única de <code>data_by_genres.csv</code>)</td>
-</tr>
-<tr class="odd">
 <td><code>year</code></td>
 <td>numérica</td>
 <td>Año de lanzamiento</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>release_date</code></td>
 <td>caracter</td>
 <td>Fecha de lanzamientos (Año-Mes-Día)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>valence</code></td>
 <td>numérica</td>
 <td>Qué tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>acousticness</code></td>
 <td>numérica</td>
 <td>Qué tan acustico es el sonido de la canción (precencia de instrumentos no electricos ni digitales), mas acústico cerca de 1, menos acústico cerca de 0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>danceability</code></td>
 <td>numérica</td>
 <td>Que tan bailable es una canción, más bailable cerca de 1, menos bailable cerca de 0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>duration_ms</code></td>
 <td>numérica</td>
 <td>Duración en milisegundos</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>energy</code></td>
 <td>numérica</td>
 <td>Intencidad perceptual de la canción</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>explicit</code></td>
 <td>numérica</td>
 <td>La canción tiene contenido explicito (Si=1,No=0)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>instrumentalness</code></td>
 <td>numérica</td>
-<td>Cantidad de voces en la canción, más cerca está de 1.0, más instrumental</td>
+<td>Cantidad de voces en la canción, más cerca está de 1.0, más instrumental, tambien puede referenciar la complejidad de la obra</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>key</code></td>
 <td>numérica</td>
 <td>Tono de la canción</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>liveness</code></td>
 <td>numérica</td>
 <td>Probabilidad de que la canción haya sido grabada en vivo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>loudness</code></td>
 <td>numérica</td>
 <td>Volumen de la canción</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>mode</code></td>
 <td>numérica</td>
 <td>Tonalidad mayor si es 1, tonalidad menor si es 0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>popularity</code></td>
 <td>numérica</td>
 <td>Qué tan popular es la canción</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>speechiness</code></td>
 <td>numérica</td>
 <td>Proporción de tiempo que ocupan palabras habladas o cantadas en la canción</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>tempo</code></td>
 <td>numérica</td>
 <td>Tempo de la canción (velocidad)</td>
 </tr>
 </tbody>
 </table>
-<p>Figura 1</p>
+<p>Para trabajar usaremos aquellas variables que reflejen cierta tendencia, para hacer este análisis trabajaremos con la base de datos <code>data</code>, qué es la que contiene todos los datos, junto con la base <code>data_by_year</code> que contiene todas las variables numéricas pero se promedian por año, trabajaremos un poco con la variable <code>explicit</code> de la base de datos <code>data</code>, para contar cuantas canciones con contenido explicito hay cada año. Ademas se ajustara un modelo de regresión, para ver cuales aspectos inciden más en la popularidad de la canción, los cálculos necesarios para este llegar a este modelo se haran con una muestra que fue seleccionada bajo un criterio de popularidad, esta base de datos fue nombrada <code>datos_a_estudiar1</code>, luego hicimos una muestra aleatoria de la base da datos <code>data</code> llamada muestra_datos, de igual tamaño que <code>datos_a_estudiar1</code>, lo que motiva la creación de esta muestra es hacer una comparación entre el comportamiento de las canciones populares y el resto de canciones, pero la base de datos completa es muy grande y puede ser poco eficiente computacionalmente trabajar con tantos datos.</p>
+<p>Tambien se añadieron seis variables a las bases de datos a estudiar, que se presentan en la siguiente tabla:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 10%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Popularidad</td>
+<td>caracter</td>
+<td>La canción cumple con el requisito para considerarse popular</td>
+</tr>
+<tr class="even">
+<td>artist_list</td>
+<td>lista</td>
+<td>Lista de interpretes</td>
+</tr>
+<tr class="odd">
+<td>numero_de_artistas</td>
+<td>numérica</td>
+<td>Número de interpretes</td>
+</tr>
+<tr class="even">
+<td>main_artist</td>
+<td>caracter</td>
+<td>Interprete principal de la canción</td>
+</tr>
+<tr class="odd">
+<td>duration_s</td>
+<td>numérica</td>
+<td>Duración en segundos de la canción</td>
+</tr>
+<tr class="even">
+<td>feat</td>
+<td>numérica</td>
+<td>Si es una colaboración es 1, si no es 0</td>
+</tr>
+</tbody>
+</table>
+<p>A pesar de que se crearon variables que podrian reemplazar como <code>duration_ms</code> y <code>artist</code> por <code>duration_s</code> y <code>artist_list</code> no se elimino ninguna variable original.</p>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-baiporaño" class="quarto-figure quarto-figure-center anchored">
@@ -216,12 +266,52 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 <p>Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-expporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 2: Canciones explicitas por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-expporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-acporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 3: Acusticidad promedio por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-acporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-intporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 4: Instrumentalidad promedio por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-intporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-engporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 5: Energia promedio por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-engporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subconj" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 2: Canciones populares y no populares</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 6: Canciones populares y no populares</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-subconj-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -232,15 +322,15 @@ ul.task-list{list-style: none;}
 <p>Con la idea de ver cuales son las variables qué más influyen en la popularidad de una canción se ajustó un modelo de regresión lineal (anexo), a partir del cual se llego a que los aspectos que más afectan a la popularidad de una canción son, en orden descendente, la duranción, la bailabilidad, la instrumentalidad, la energia, el volumen y el número de interpretes.</p>
 <p>Por lo tanto, vamos a ver como se comportan las variables asociadas a los aspectos antes mencionados, en el 1% más popular y lo compararemos con una muestra aleatoria de igual tamaño de la base de datos completa, para ver cuales son las diferencias entre las canciones más populares y el resto de estas.</p>
 </section>
-<section id="resultados" class="level2">
-<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<section id="resultados-1" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-1">Resultados</h2>
 <p>En este apartado todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.</p>
 <p>Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura #:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-durs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 3: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 7: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-durs-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -252,7 +342,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-dance" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 4: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 8: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-dance-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -263,7 +353,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-inst" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 5: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 9: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-inst-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -274,7 +364,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-energy" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 6: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 10: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-energy-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -284,7 +374,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-loud" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 7: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 11: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-loud-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -294,7 +384,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-Numart" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 8: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 12: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-Numart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -304,7 +394,7 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-feat" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 9: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 13: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-feat-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>

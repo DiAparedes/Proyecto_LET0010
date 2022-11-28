@@ -65,6 +65,45 @@ grafby=datos_por_año %>%
   labs(
        x="Año",
        y="Bailabilidad")
+##grafico acusticidad por año,
+grafacy=datos_por_año %>% 
+  ggplot(aes(year,acousticness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  geom_vline(xintercept = 1951.5,linetype="dashed",color="black")+
+  labs(
+    x="Año",
+    y="Acusticidad(Naturalidad del sonido)")+
+  annotate("text", x = 1970, y = 0.95, label = "Creación primer sintetizador de música")
+
+## graf loud- inst, energy
+
+grafinty=datos_por_año %>% 
+  ggplot(aes(year,instrumentalness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Instrumentalidad")
+
+
+
+grafeny=datos_por_año %>% 
+  ggplot(aes(year,energy))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Energía")
+
+
+grafloy=datos_por_año %>% 
+  ggplot(aes(year,loudness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Volumen")
 
 #codigo grafico 3, a arreglar en un futuro
 

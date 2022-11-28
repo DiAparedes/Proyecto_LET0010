@@ -7,7 +7,7 @@ format:
     toc-location: left
     fig-cap-location: top
     
-lang: "es" 
+lang: es
 editor: visual
 ---
 
@@ -39,18 +39,24 @@ La variable `explicit` en "Spotify" se aplica a una canción que tiene:
 
 Generalmente esta variable con fines de restricción parental.
 
-```{r echo=FALSE}
+La variable `loudness`, hace referencia a un resuldato del proceso de mezcla de una canción, ya que durante la producción de una pieza musical, las diferentes voces son grabadas con un volumen natural y luego se suele bajar la intensidad del sonido para destacar algunas cosas sobre otras, por eso este aspecto toma valores negativos.
+
+## Datos
+
+Los datos corresponden a una base de datos de Spotify y fueron recogidos durante el mes de noviembre del año 2020. Las variables que se encuentran en esta base de datos se presentan en la siguiente tabla:
+
+```{r echo=FALSE, include=FALSE}
 #| fig-cap: "Tabla de variables"
 #| label: fig-tabla-variables
+
 
 ```
 
 | Variable           | Tipo     | Descripción                                                                                                                                            |
-|-----------------|-----------------|--------------------------------------|
+|------------------|------------------|-------------------------------------|
 | `name`             | caracter | Nombre de la canción                                                                                                                                   |
 | `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
 | `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
-| `genres`           | caracter | Género de la cancion (Variable única de `data_by_genres.csv`)                                                                                          |
 | `year`             | numérica | Año de lanzamiento                                                                                                                                     |
 | `release_date`     | caracter | Fecha de lanzamientos (Año-Mes-Día)                                                                                                                    |
 | `valence`          | numérica | Qué tipo de emociónes transmite la canción, más triste cerca de 0, más feliz cerca de 1                                                                |
@@ -59,7 +65,7 @@ Generalmente esta variable con fines de restricción parental.
 | `duration_ms`      | numérica | Duración en milisegundos                                                                                                                               |
 | `energy`           | numérica | Intencidad perceptual de la canción                                                                                                                    |
 | `explicit`         | numérica | La canción tiene contenido explicito (Si=1,No=0)                                                                                                       |
-| `instrumentalness` | numérica | Cantidad de voces en la canción, más cerca está de 1.0, más instrumental                                                                               |
+| `instrumentalness` | numérica | Cantidad de voces en la canción, más cerca está de 1.0, más instrumental, tambien puede referenciar la complejidad de la obra                          |
 | `key`              | numérica | Tono de la canción                                                                                                                                     |
 | `liveness`         | numérica | Probabilidad de que la canción haya sido grabada en vivo                                                                                               |
 | `loudness`         | numérica | Volumen de la canción                                                                                                                                  |
@@ -68,7 +74,22 @@ Generalmente esta variable con fines de restricción parental.
 | `speechiness`      | numérica | Proporción de tiempo que ocupan palabras habladas o cantadas en la canción                                                                             |
 | `tempo`            | numérica | Tempo de la canción (velocidad)                                                                                                                        |
 
-Figura 1
+Para trabajar usaremos aquellas variables que reflejen cierta tendencia, para hacer este análisis trabajaremos con la base de datos `data`, qué es la que contiene todos los datos, junto con la base `data_by_year` que contiene todas las variables numéricas pero se promedian por año, trabajaremos un poco con la variable `explicit` de la base de datos `data`, para contar cuantas canciones con contenido explicito hay cada año. Ademas se ajustara un modelo de regresión, para ver cuales aspectos inciden más en la popularidad de la canción, los cálculos necesarios para este llegar a este modelo se haran con una muestra que fue seleccionada bajo un criterio de popularidad, esta base de datos fue nombrada `datos_a_estudiar1`, luego hicimos una muestra aleatoria de la base da datos `data` llamada muestra_datos, de igual tamaño que `datos_a_estudiar1`, lo que motiva la creación de esta muestra es hacer una comparación entre el comportamiento de las canciones populares y el resto de canciones, pero la base de datos completa es muy grande y puede ser poco eficiente computacionalmente trabajar con tantos datos.
+
+Tambien se añadieron seis variables a las bases de datos a estudiar, que se presentan en la siguiente tabla:
+
+| Variable           | Tipo     | Descripcion                                                  |
+|--------------------|----------|--------------------------------------------------------------|
+| Popularidad        | caracter | La canción cumple con el requisito para considerarse popular |
+| artist_list        | lista    | Lista de interpretes                                         |
+| numero_de_artistas | numérica | Número de interpretes                                        |
+| main_artist        | caracter | Interprete principal de la canción                           |
+| duration_s         | numérica | Duración en segundos de la canción                           |
+| feat               | numérica | Si es una colaboración es 1, si no es 0                      |
+
+A pesar de que se crearon variables que podrian reemplazar como `duration_ms` y `artist` por `duration_s` y `artist_list` no se elimino ninguna variable original.
+
+## Resultados
 
 ```{r echo=FALSE, include=FALSE}
 library(readr)
@@ -94,6 +115,14 @@ cantft=read_csv(here::here("datos/feat.csv"))
 
 cantftM=read_csv(here::here("datos/featM.csv"))
 
+datosye=data.frame(datos$year,datos$explicit)
+
+
+datosye=tapply(datos$explicit,datos$year,FUN = sum)
+
+datosye2=data.frame(seq(1921,2020),datosye)
+
+
 ```
 
 ```{r echo=FALSE}
@@ -112,6 +141,69 @@ grafby
 ```
 
 Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del
+
+```{r echo=FALSE}
+#| fig-cap: "Canciones explicitas por año"
+#| label: fig-expporaño
+
+
+
+grafico2=datosye2 %>% 
+  ggplot(aes(seq.1921..2020.,datosye))+
+  geom_line(size=2,col="#1db954" )+
+  theme_bw()+
+  labs(
+       x="Año",
+       y="Cantidad de canciones")
+grafico2
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Acusticidad promedio por año"
+#| label: fig-acporaño
+
+
+grafacy=datos_por_año %>% 
+  ggplot(aes(year,acousticness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  geom_vline(xintercept = 1951.5,linetype="dashed",color="black")+
+  labs(
+    x="Año",
+    y="Acusticidad(Naturalidad del sonido)")+
+  annotate("text", x = 1970, y = 0.95, label = "Creación primer sintetizador de música")
+grafacy
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Instrumentalidad promedio por año"
+#| label: fig-intporaño
+
+grafinty=datos_por_año %>% 
+  ggplot(aes(year,instrumentalness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Instrumentalidad")
+grafinty
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Energia promedio por año"
+#| label: fig-engporaño
+
+
+grafeny=datos_por_año %>% 
+  ggplot(aes(year,energy))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Energía")
+
+grafeny
+```
 
 Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:
 
@@ -284,6 +376,7 @@ grafico9=ggplot(data=datos_a_estudiar1)+
   labs(
        x="Numero de artistas",
        y="Cantidad de canciones")
+
 
 
 grafico92=ggplot(data=muestra_datos)+
