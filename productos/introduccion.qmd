@@ -6,6 +6,7 @@ format:
     toc: true
     toc-location: left
     fig-cap-location: top
+    
 lang: "es"    
 editor: visual
 ---
@@ -79,11 +80,17 @@ library(gtsummary)
 library(gridExtra)
 
 
+
 datos=read_csv(here::here("datos/data.csv"))
 
 datos_a_estudiar1=read_csv(here::here("datos/datos_a_estudiar1.csv"))
 
 muestra_datos=read_csv(here::here("datos/muestra_datos.csv"))
+
+
+cantft=read_csv(here::here("datos/feat.csv"))
+
+cantftM=read_csv(here::here("datos/featM.csv"))
 
 ```
 
@@ -252,4 +259,29 @@ grafico92=ggplot(data=muestra_datos)+
 
 grid.arrange(grafico9,grafico92,ncol=2)
 
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Colaboraciones en canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-feat
+
+
+
+
+grafico10=ggplot(data=cantft,aes(x=name,y=value))+
+  geom_bar(stat="identity" ,col= "black",fill="#1db954",width=0.5)+
+  theme_bw()+
+  labs(x="Tipo de canción",
+       y="Cantidad de canciones")
+
+
+
+
+grafico102=ggplot(data=cantftM,aes(x=name,y=value))+
+  geom_bar(stat="identity" ,col= "black",fill="#b3b3b3",width=0.5)+
+  theme_bw()+
+  labs(x="Tipo de canción",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico10,grafico102,ncol=2)
 ```

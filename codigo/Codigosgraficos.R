@@ -72,26 +72,31 @@ median(datos_a_estudiar1$duration_s)
 #graficos de variables impprtantes
 
 ####
+#### durs 205.09
+####
+
+labs(title="Duranción en segundos de canciones populares")
+     
+labs(title="Duranción en segundos de canciones no populares")
+
 grafico4=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=duration_s),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Duranción en segundos de canciones populares",
-       x="Duracion",
+  labs(x="Duración",
        y="Cantidad de canciones")
-  
+
   
 grafico42=ggplot(data=muestra_datos)+
   geom_histogram(aes(x=duration_s),col= "black",fill="#b3b3b3")+
   theme_bw()+
-  labs(title="Duranción en segundos de canciones no populares",
-       x="Duracion",
+  labs(x="Duración",
        y="Cantidad de canciones")
   
 
 grid.arrange(grafico4,grafico42,ncol=2)
   
 ####
-
+####dancs 0.731
 ####
 
 grafico5=ggplot(data=datos_a_estudiar1)+
@@ -110,10 +115,13 @@ grafico52=ggplot(data=muestra_datos)+
        x="Bailabilidad",
        y="Cantidad de canciones")
 
+grid.arrange(grafico5,grafico52,ncol=2)
+
 
 ####
-
+####ints 5.22e-05
 ####
+
 grafico6=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=instrumentalness),col= "black",fill="#1db954")+
   theme_bw()+
@@ -130,9 +138,10 @@ grafico62=ggplot(data=muestra_datos)+
        x="Instrumentalidad",
        y="Cantidad de canciones")
 
+grid.arrange(grafico6,grafico62,ncol=2)
 
 ####
-
+####energy 0.573
 ####
 
 
@@ -156,44 +165,73 @@ grafico72=ggplot(data=muestra_datos)+
                     y="Cantidad de canciones")
 
 
-####
+grid.arrange(grafico7,grafico72,ncol=2)
 
+####
+####loud=-10.059
 ####
 
 
 grafico8=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=loudness),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Energia de canciones no populares",
-       x="Energia",
+  labs(title="Volumen de canciones populares",
+       x="volumen",
        y="Cantidad de canciones")
 
 grafico82=ggplot(data=muestra_datos)+
-  geom_histogram(aes(x=loudness),col= "black",fill="#1db954")+
+  geom_histogram(aes(x=loudness),col= "black",fill="#b3b3b3")+
   theme_bw()+
-  labs(title="Energia de canciones no populares",
-       x="Energia",
+  labs(title="Volumen de canciones no populares",
+       x="Volumen",
        y="Cantidad de canciones")
 
+grid.arrange(grafico8,grafico82,ncol=2)
 
 ####
-
+####nart  2
 ####
 
 grafico9=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=numero_de_artistas),col= "black",fill="#1db954")+
-  theme_bw()
+  theme_bw()+
+  labs(
+       x="Numero de artistas",
+       y="Cantidad de canciones")
 
 
+grafico92=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=numero_de_artista_muestra),col= "black",fill="#b3b3b3")+
+  theme_bw()+
+  labs(
+       x="Numero de artistas",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico9,grafico92,ncol=2)
 
 ####
-
+####
 ####
 
+cantft=data.frame(name=c("Solo", "Feat"),value=c(1736-sum(datos_a_estudiar1$feat), sum(datos_a_estudiar1$feat)))
 
-grafico10=ggplot(data=datos_a_estudiar1)+
-  geom_histogram(aes(x=feat),col= "black",fill="#1db954")+
-  theme_bw()
+cantftM=data.frame(name=c("Solo", "Feat"),value=c(1736-sum(muestra_datos$featm), sum(muestra_datos$featm)))
+
+
+grafico10=ggplot(data=cantft,aes(x=name,y=value))+
+  geom_bar(stat="identity" ,col= "black",fill="#1db954",width=0.5)+
+  theme_bw()+
+  labs(x="Tipo de canción",
+       y="Cantidad de canciones")
+
+
+
+
+grafico102=ggplot(data=cantftM,aes(x=name,y=value))+
+  geom_bar(stat="identity" ,col= "black",fill="#b3b3b3",width=0.5)+
+  theme_bw()+
+  labs(x="Tipo de canción",
+       y="Cantidad de canciones")
 
 ###
 
