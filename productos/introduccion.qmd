@@ -1,6 +1,12 @@
 ---
 title: "Introducción"
-format: html
+format: 
+  html:
+    linkcolor: "#1db954"
+    toc: true
+    toc-location: left
+    fig-cap-location: top
+lang: "es"    
 editor: visual
 ---
 
@@ -32,8 +38,14 @@ La variable `explicit` en "Spotify" se aplica a una canción que tiene:
 
 Generalmente esta variable con fines de restricción parental.
 
+```{r echo=FALSE}
+#| fig-cap: "Tabla de variables"
+#| label: fig-tabla-variables
+
+```
+
 | Variable           | Tipo     | Descripción                                                                                                                                            |
-|--------------|--------------|--------------------------------------------|
+|-----------------|-----------------|--------------------------------------|
 | `name`             | caracter | Nombre de la canción                                                                                                                                   |
 | `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
 | `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
@@ -62,20 +74,34 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(here)
+library(gt)
+library(gtsummary)
+library(gridExtra)
+
 
 datos=read_csv(here::here("datos/data.csv"))
+
+datos_a_estudiar1=read_csv(here::here("datos/datos_a_estudiar1.csv"))
+
+muestra_datos=read_csv(here::here("datos/muestra_datos.csv"))
+
 ```
 
 Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:
 
 ```{r echo=FALSE}
-datos$Popularidad=ifelse(datos$popularity >75, "Popular","No Popular")
+#| fig-cap: "Canciones populares y no populares"
+#| label: fig-subconj
+
+datos$Popularidad=ifelse(datos$popularity >76, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
   geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
-  labs(title="Figura 2:Número de canciones según su popularidad",
+  labs(
        x="Popularidad", y="Número de Canciones")+
-  geom_vline(xintercept = 74,linetype="dashed",color="black")+
-  annotate("text", x = 91, y = 25000, label = "Canciones a estudiar")
+  scale_fill_manual(values = c("#b3b3b3", "#1db954"))+
+  theme_bw()+
+  geom_vline(xintercept = 76,linetype="dashed",color="black")+
+  annotate("text", x = 87, y = 25000, label = "Canciones a estudiar")
 grafico1
 ```
 
@@ -83,3 +109,147 @@ Vemos que si el requisito mínimo para considerar una canción exitosa, es que t
 
 \
 Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).
+
+```{r echo=FALSE}
+#| fig-cap: "Duranción en segundos de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-durs
+
+grafico4=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=duration_s),col= "black",fill="#1db954",bins = 30)+
+  theme_bw()+
+  labs(x="Duración",
+       y="Cantidad de canciones")
+
+  
+grafico42=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=duration_s),col= "black",fill="#b3b3b3",bins = 30)+
+  theme_bw()+
+  labs(x="Duración",
+       y="Cantidad de canciones")
+  
+
+graf4=grid.arrange(grafico4,grafico42,ncol=2)
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Bailabilidad de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-dance
+
+grafico5=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=danceability),col= "black",fill="#1db954",bins = 30)+
+  theme_bw()+
+  labs(
+       x="Bailabilidad",
+       y="Cantidad de canciones")
+
+
+
+grafico52=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=danceability),col= "black",fill="#b3b3b3",bins = 30)+
+  theme_bw()+
+  labs(
+       x="Bailabilidad",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico5,grafico52,ncol=2)
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Instrumentalidad de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-inst
+
+
+
+grafico6=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=instrumentalness), col= "black",fill="#1db954", bins=30)+
+  theme_bw()+
+  labs(
+       x="Instrumentalidad",
+       y="Cantidad de canciones")
+
+
+
+grafico62=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=instrumentalness),col= "black",fill="#b3b3b3", bins=30)+
+  theme_bw()+
+  labs(
+       x="Instrumentalidad",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico6,grafico62,ncol=2)
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Energia de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-energy
+
+
+grafico7=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=energy),col= "black",fill="#1db954", bins=30)+
+  theme_bw()+
+  labs(
+       x="Energia",
+       y="Cantidad de canciones")
+
+
+
+grafico72=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=energy),col= "black",fill="#b3b3b3", bins=30)+
+  theme_bw()+  
+  labs(
+                    x="Energia",
+                    y="Cantidad de canciones")
+
+
+grid.arrange(grafico7,grafico72,ncol=2)
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Volumen de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-loud
+
+
+grafico8=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=loudness),col= "black",fill="#1db954", bins=30)+
+  theme_bw()+
+  labs(
+       x="volumen",
+       y="Cantidad de canciones")
+
+grafico82=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=loudness),col= "black",fill="#b3b3b3", bins=30)+
+  theme_bw()+
+  labs(
+       x="Volumen",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico8,grafico82,ncol=2)
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Volumen de canciones populares y muestra de las otras canciones"
+#| label: fig-canciones-pop-Numart
+
+
+grafico9=ggplot(data=datos_a_estudiar1)+
+  geom_histogram(aes(x=numero_de_artistas),col= "black",fill="#1db954", bins=30)+
+  theme_bw()+
+  labs(
+       x="Numero de artistas",
+       y="Cantidad de canciones")
+
+
+grafico92=ggplot(data=muestra_datos)+
+  geom_histogram(aes(x=numero_de_artista_muestra),col= "black",fill="#b3b3b3", bins=30)+
+  theme_bw()+
+  labs(
+       x="Numero de artistas",
+       y="Cantidad de canciones")
+
+grid.arrange(grafico9,grafico92,ncol=2)
+
+```

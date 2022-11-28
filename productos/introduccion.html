@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.36">
@@ -32,10 +32,21 @@ ul.task-list{list-style: none;}
 
 </head>
 
-<body class="fullcontent">
+<body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -73,11 +84,14 @@ ul.task-list{list-style: none;}
 <li><p>Comportamiento peligroso o criminal que podria incluso ser “glamorizado” o incentivar la imitación de dichas conductas</p></li>
 </ul>
 <p>Generalmente esta variable con fines de restricción parental.</p>
+<div class="cell">
+
+</div>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 61%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 52%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -193,12 +207,77 @@ ul.task-list{list-style: none;}
 <p>Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="introduccion_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div id="fig-subconj" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 1: Canciones populares y no populares</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-subconj-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.</p>
 <p><br>
 Ajustamos un modelo que toma las seis variables que mas incidencia tienen en la popularidad(mostrar o llevar al anexo donde esta el codigo y esplicación del modelo).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-durs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 2: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-durs-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-dance" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 3: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-dance-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-inst" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 4: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-inst-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-energy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 5: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-energy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-loud" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 6: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-loud-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-canciones-pop-Numart" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 7: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-canciones-pop-Numart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 
 </main>
@@ -243,7 +322,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     setTimeout(function() {
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
