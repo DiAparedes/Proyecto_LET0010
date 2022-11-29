@@ -16,7 +16,7 @@ info_full_mod %>%
 
 info_full_mod %>% 
   ggplot(aes(sample = .std.resid)) + 
-  stat_qq() + # por defecto indica dist. normal
+  stat_qq() + 
   stat_qq_line() +
   labs(x = "Cuantiles dist. normal teóricos", y = "Cuantiles muestrales") 
 
@@ -36,7 +36,7 @@ info_full_mod %>%
 
 info_full_mod %>% 
   ggplot(aes(sample = .std.resid)) + 
-  stat_qq() + # por defecto indica dist. normal
+  stat_qq() + 
   stat_qq_line() +
   labs(x = "Cuantiles dist. normal teóricos", y = "Cuantiles muestrales") 
 

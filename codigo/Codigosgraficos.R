@@ -246,7 +246,8 @@ grafico9=ggplot(data=datos_a_estudiar1)+
   theme_bw()+
   labs(
        x="Numero de artistas",
-       y="Cantidad de canciones")
+       y="Cantidad de canciones")+
+
 
 
 grafico92=ggplot(data=muestra_datos)+

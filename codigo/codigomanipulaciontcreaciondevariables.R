@@ -99,3 +99,10 @@ muestra_datos$artistslistmuestra=artist_list_m
 muestra_datos$featm=ifelse(muestra_datos$numero_de_artista_muestra>1,1,0)
 write_csv(muestra_datos,"datos/muestra_datos.csv")
 
+library(gt)
+library(gtsummary)
+corvarn=cor(datos_numericos)
+
+
+corvarn %>% 
+  gt()

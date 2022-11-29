@@ -1,0 +1,2 @@
+valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,liveness,loudness,mode,name,popularity,release_date,speechiness,tempo
+0.145,2020,0.401,"['Bad Bunny', 'Jhay Cortez']",0.731,205090,0.573,1,47EiUVwUp4C9fGccaPuUCS,5.22e-5,4,0.113,-10.059,0,Dakiti,100,2020-10-30,0.0544,109.928

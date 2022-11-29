@@ -15,6 +15,25 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -44,7 +63,8 @@ ul.task-list{list-style: none;}
   <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
   <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
   <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
-  <li><a href="#resultados-1" id="toc-resultados-1" class="nav-link" data-scroll-target="#resultados-1">Resultados</a></li>
+  <li><a href="#anexo" id="toc-anexo" class="nav-link" data-scroll-target="#anexo">Anexo</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
   </ul>
 </nav>
 </div>
@@ -70,14 +90,14 @@ ul.task-list{list-style: none;}
 
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
-<p>La música ha sido parte fundamental de la historia de la humanidad. “La música es una de las expresiones creativas más íntimas del ser, ya que forma parte del quehacer cotidiano de cualquier grupo humano tanto por su goce estético como por su carácter funcional y social. La música nos identifica como seres, como grupos y como cultura, tanto por las raíces identitarias como por la locación geográfica y épocas históricas.” (Angel, Camus y Mansilla, 2008: 18).</p>
 <p>Desde que la existe la industria musical se han tratado de crear canciones que generen gran impacto en la sociedad, pues esto se podría traducir en beneficios monetarios en un periodo de tiempo cercano al estreno de la canción. Por esto puede ser importante para alguna empresa discográfica saber cómo hacer alguna canción exitosa, por lo tanto, podría ser relevante para estas compañías conocer cuales son las tendencias musicales, y los patrones que se repiten en las canciones que ya fueron exitosas.</p>
 <p>Para entender mejor como han sido las tendencias musicales de los últimos años haremos un análisis de una base de datos de “Spotify”, con el fin de ver cuales son los factores que hacen que una canción sea popular, o que al menos aumentan las posibilidades de que lo sea.</p>
-<p>En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. En la segunda parte dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.</p>
+<p>En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. Luego dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.</p>
 </section>
 <section id="contexto" class="level2">
 <h2 class="anchored" data-anchor-id="contexto">Contexto</h2>
 <p>La mayoria de las variables numéricas que miden aspectos tecnicos de una canción se obtuvieron por medio de algoritmos fueron hechos para medir este tipo de información.</p>
+<p>Las canciones que entran en esta base de datos datan desde 1921 hasta 2020.</p>
 <p>La variable <code>explicit</code> en “Spotify” se aplica a una canción que tiene:</p>
 <ul>
 <li><p>Lenguaje fuerte</p></li>
@@ -94,8 +114,8 @@ ul.task-list{list-style: none;}
 <p>Los datos corresponden a una base de datos de Spotify y fueron recogidos durante el mes de noviembre del año 2020. Las variables que se encuentran en esta base de datos se presentan en la siguiente tabla:</p>
 <table class="table">
 <colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 25%">
 <col style="width: 50%">
 </colgroup>
 <thead>
@@ -207,9 +227,9 @@ ul.task-list{list-style: none;}
 <p>Tambien se añadieron seis variables a las bases de datos a estudiar, que se presentan en la siguiente tabla:</p>
 <table class="table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 10%">
-<col style="width: 67%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 58%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -252,9 +272,13 @@ ul.task-list{list-style: none;}
 </tbody>
 </table>
 <p>A pesar de que se crearon variables que podrian reemplazar como <code>duration_ms</code> y <code>artist</code> por <code>duration_s</code> y <code>artist_list</code> no se elimino ninguna variable original.</p>
+<p>Ademas se calculo la correlación entre las variables de la base de datos original ( <span class="citation" data-cites="cor1">(<a href="#ref-cor1" role="doc-biblioref"><strong>cor1?</strong></a>)</span> ) y una tabla que muestra solo la correlación entre popularity y las otras variables numéricas, en esta se incluyo el número de artistas ( <span class="citation" data-cites="cor2">(<a href="#ref-cor2" role="doc-biblioref"><strong>cor2?</strong></a>)</span> ) .</p>
+<p>Finalmente se incluyo una tabla que muestra la cancion más popular ( <span class="citation" data-cites="can1">(<a href="#ref-can1" role="doc-biblioref"><strong>can1?</strong></a>)</span> )</p>
 </section>
 <section id="resultados" class="level2">
 <h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>Vamos a ver como se han comportado un par de aspectos que podrian responder a factores culturales que son la bailabilidad y el tipo de contenido que tienen las canciones, refiendonos a si este es explicito o no.</p>
+<p>Comenzamos por la bailabilidad que es algo que se podria asociar más a ciertos generos urbanos o a música latinoamerica, veamos el comportamiento de esta variable en la Figura 1:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-baiporaño" class="quarto-figure quarto-figure-center anchored">
@@ -265,7 +289,8 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 </div>
-<p>Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del</p>
+<p>Se ve que ha habido un incremento de la bailabilidad, mucho mayor que el de tiempos anteriores a partir del 2011, que coincide con la epoca en la que se comenzaron a misificar los servicios de streaming de musica como Spotify, que ayudaron a la diversificación de estilos musicales, y la posterior masificación de estilos más bailables, como los estilos urbanos y latinos.</p>
+<p>En cuanto al tipo de contenido, explícito o no, podriamos pensar que cada vez las tematicas de las canciones tienden a ser más explicitas, miremos como ha ido evolucionando este fenomeno con el paso de los años con el paso del tiempo en la Figura 2:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-expporaño" class="quarto-figure quarto-figure-center anchored">
@@ -276,6 +301,9 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 </div>
+<p>Es evidente que tiene un comportamiento extraño, a pesar de que en los últimos ha aumentado considerablemente, y es muy probable que los siga haciendo, entre los años 1925 y 1950 tiene un comportamiento erratico, y aunque en esos años hubo un auge de música negra, como el jazz y las tematicas politicas y sociales, que podrian asociarce a contenido explicito para Spotify, es curioso que luego de un corto vistaso a la base de datos, mucho del contenido explicito de aquellos años son canciones o poemas recitados de autores de la Unión Sovietica, y la aparentemente Spotify tambien considera ese tipo de temáticas como explicitas.</p>
+<p>Ahora vamos a ver como se han comportado aquellos aspectos más técnicos a la hora de hacer una canción, solo veremos los cambios en el tiempo de las variables que presentan cambios evidentes, que son la acusticidad, la instrumentalidad, la energia y el volumen, las otras variables no presentan alguna tendencia clara.</p>
+<p>Primero analicemos la acusticidad, es decir, que tan organico es el sonido de una pieza musical en la Figura 3:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-acporaño" class="quarto-figure quarto-figure-center anchored">
@@ -286,6 +314,8 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 </div>
+<p>Es claro que hoy en dia los instrumentos “reales” cada vez se usan menos, principalmente por practicidad y presupuesto, pues los instrumentos reales son caros, y ocupan espacio, y obviamente hay que saber tocarlos, en cambio los instrumento digitales han ganado mucho terreno, practicamente desde su creación. Como vemos en el gráfico desde que se invento el primer sintetizador de música, la acusticidad de las canciones ha disminuidos considerablemente, y en los ultimos años se ve que va a seguir bajando.</p>
+<p>De la mano con el fenomeno ocurrido con la acusticidad, esta lo que ocurre con la instrumentalidad y podemos ver que hay una clara relación entre estas dos, pues comienzan a bajar de forma ininterrumpida, es claro al ver la Figura 4:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-intporaño" class="quarto-figure quarto-figure-center anchored">
@@ -296,95 +326,110 @@ ul.task-list{list-style: none;}
 </div>
 </div>
 </div>
+<p>Lo que ocurre en este caso tiene que ver con la creación de instrumentos digitales, pues es más facil conseguir un sonido con un sintetizador, incluso hacer efectos de coro que disminuyen el uso de muchas voces o instrumentos reales</p>
+<p>De la misma forma que las dos variables analizadas anteriormente estaban relacionadad, las dos que analizaremos ahora tambien, estas son la energia y el volumen, como se hace evidente en la Figura 5 y la Figura 6:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-engporaño" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 5: Energia promedio por año</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 5: Energía promedio por año</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-engporaño-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-volporaño" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figura 6: Volumen promedio por año</figcaption><p></p>
+<p><img src="introduccion_files/figure-html/fig-volporaño-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este aumento en ambos aspectos se deben a que la mejor forma de hacer que una canción transmita mas energía es aumentando el volumen, esto es muy importante para nuestro análisis, ya que la música con mayor volumen llama más la atención que aquella con volumen más bajo.</p>
+<p>Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para esto nos vamos a basar en un dato entregado por Alan B.Krueger, un economista e invetigador de la industria musical, que es el equivalente al 1% de los productos musicales son los que más exito tienen, en base a este dato, se decidio buscar en qué valor de la variable <code>popularity</code> estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada., para ello veamos la Figura 7:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subconj" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 6: Canciones populares y no populares</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 7: Canciones populares y no populares</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-subconj-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.</p>
-<p>decir que es el equivalente al 1% de los artistas, que según un diario se llego a que este es el porcentaje de interpretes que se lleva la mayor proporcion de las ganancias en la industrial musical, en base a este dato, se decidio buscar en qué valor de la variable <code>popularity</code> estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada.</p>
+<p>Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor igual o superior a 76 en el indice de popularidad, es evidente la mayoria de las canciones tienen una popularidad moderada, y un gran grupo no tiene una popularidad igual a 0.</p>
 <p>Con la idea de ver cuales son las variables qué más influyen en la popularidad de una canción se ajustó un modelo de regresión lineal (anexo), a partir del cual se llego a que los aspectos que más afectan a la popularidad de una canción son, en orden descendente, la duranción, la bailabilidad, la instrumentalidad, la energia, el volumen y el número de interpretes.</p>
 <p>Por lo tanto, vamos a ver como se comportan las variables asociadas a los aspectos antes mencionados, en el 1% más popular y lo compararemos con una muestra aleatoria de igual tamaño de la base de datos completa, para ver cuales son las diferencias entre las canciones más populares y el resto de estas.</p>
-</section>
-<section id="resultados-1" class="level2">
-<h2 class="anchored" data-anchor-id="resultados-1">Resultados</h2>
-<p>En este apartado todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.</p>
-<p>Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura #:</p>
+<p>A partir de ahora todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.</p>
+<p>Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura 8:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-durs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 7: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 8: Duranción en segundos de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-durs-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Vemos que las canciones mas populares concentran su duranción en torno a los 200 segundos, unos 3 minutos y medio, pero suelen alejarce de manera mas “controlada”, en cambio a nivel general, a pesar de la duración esta concentrada practicamente en el mismo rango de segundos, llegando incluso a que la proporción de canciones que duran casi lo mismo es más o menos el doble, la duración de las canciones se va de manera mas agresiva hacia los extremos, de hecho hay varias piezas que se acercan a la media hora de duración.</p>
-<p>La siguiente variable es la bailabilidad, que como vimos antes ha ido en incremento—</p>
+<p>La siguiente variable es la bailabilidad, que como vimos antes en la <a href="#fig-baiporaño">Figura&nbsp;1</a> ha ido en incrementando cada vez más con el paso del tiempo, ahora en la Figura 9 veamos como distribuye la bailabilidad:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-dance" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 8: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 9: Bailabilidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-dance-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>La distribución es casi la misma, tal vez hay una leve inclinación hacia el 1, maýor bailabilidad, en las canciones mas populares, junto con esto, tambien podemos ver que casi no hay canciones con menos de un 0.25, pero ademas de eso, las diferencias son practicamente inexistente.</p>
+<p>Anteriormente en la <a href="#fig-intporaño">Figura&nbsp;4</a> vimos que la instrumentalidad ha disminuido considerablemente en con el paso del tiempo, veamos que pasa si comparamos esta variable en las canciones populares y en el resto de canciones en la Figura 10:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-inst" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 9: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 10: Instrumentalidad de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-inst-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Nuevamente vemos una diferencia minima,</p>
+<p>Nuevamente vemos una diferencia minima, y a pesar de que este valor ha disminuido con el paso de los años, no ha sido una caracteristica de la música ser muy instrumental, al menos en el periodo de tiempo que abarcan los datos.</p>
+<p>La energía fue uno de los aspectos que más aporto información al momento de ser añadida al modelo de regresión, asi tambien fue una de las cosas que más han aumentado en la música, como se vio en la <a href="#fig-engporaño">Figura&nbsp;5</a>, ahora veamos que tan diferente es la energía en las canciones segun su popularidad en la Figura 11:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-energy" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 10: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 11: Energia de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-energy-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Tal como lo indicaba el modelo de regresión, si, la energía si es determinate cuando de popularidad se trata, la diferencia es clara, las canciones de la muestra aleatoria de la base de datos completa distribuye de manera más uniforme, incluso con valores más cercanos a una baja energia, en cambio las canciones populares claramente se inclinan hacia una energía, no extrema, pero si alta.</p>
+<p>Con el volumen ocurrio casi lo mismo que con la energía, tanto en el modelo de regresión, y en su comportamiento en el tiempo (ver <a href="#fig-volporaño">Figura&nbsp;6</a> ), veamos la Figura 12:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-loud" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 11: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 12: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-loud-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Si bien no hay tanta diferencia entre las muestras como en el caso de la energía, si hay diferencian claras, la más evidente es que el volumen, asi como la energía se concentra en valores más altos, y a pesar de que distribuyen de manera simila, se podria decir que la variabilidad en las canciones más populares es menor.</p>
+<p>Los dos aspectos siguientes son el número de artistas y si son o no una colaboración, donde practicamente uno nace del otro, por no decir que son casi lo mismo, pero es el punto pues nos gustaria analizar estos aspecto en conjuntos, los podemos ver en la Figura 13 y la Figura 14:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-canciones-pop-Numart" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 12: Volumen de canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 13: Numero de artistas de canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-Numart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
@@ -394,15 +439,2086 @@ ul.task-list{list-style: none;}
 <div class="cell-output-display">
 <div id="fig-canciones-pop-feat" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p></p><figcaption class="figure-caption">Figura 13: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 14: Colaboraciones en canciones populares y muestra de las otras canciones</figcaption><p></p>
 <p><img src="introduccion_files/figure-html/fig-canciones-pop-feat-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>En la Figura 14 vemos que alrededor de un tercio de las canciones más populares corresponden a colaboraciones, mientras que en las canciones de nuestra muestra aleatoria más o menos un cuarto de las canciones son colaboraciones, lo que resulta llamativo es que al ver la Figura 13 las canciones de la muestra aleatoria son las que llegan a un número más elevado de interpretes, cuando las canciones populares raramente superan los dos interpretes.</p>
+<p>El último aspecto a consderar estan los artistas/interpretes de las canciones, para eso vamos a ver quiénes son las diez personas con mas canciones entre las más populares, para esto veamos la Figura 15:</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="gjtkdcibrb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#gjtkdcibrb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gjtkdcibrb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gjtkdcibrb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gjtkdcibrb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gjtkdcibrb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gjtkdcibrb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gjtkdcibrb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gjtkdcibrb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gjtkdcibrb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gjtkdcibrb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gjtkdcibrb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gjtkdcibrb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gjtkdcibrb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjtkdcibrb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gjtkdcibrb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gjtkdcibrb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjtkdcibrb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gjtkdcibrb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjtkdcibrb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gjtkdcibrb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjtkdcibrb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gjtkdcibrb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjtkdcibrb .gt_left {
+  text-align: left;
+}
+
+#gjtkdcibrb .gt_center {
+  text-align: center;
+}
+
+#gjtkdcibrb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gjtkdcibrb .gt_font_normal {
+  font-weight: normal;
+}
+
+#gjtkdcibrb .gt_font_bold {
+  font-weight: bold;
+}
+
+#gjtkdcibrb .gt_font_italic {
+  font-style: italic;
+}
+
+#gjtkdcibrb .gt_super {
+  font-size: 65%;
+}
+
+#gjtkdcibrb .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#gjtkdcibrb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gjtkdcibrb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gjtkdcibrb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gjtkdcibrb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gjtkdcibrb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gjtkdcibrb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Artista</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Cantidad de canciones</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Bad Bunny</td>
+<td class="gt_row gt_right">23</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">24kGoldn</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">BTS</td>
+<td class="gt_row gt_right">22</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Cardi B</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Ariana Grande</td>
+<td class="gt_row gt_right">26</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Pop Smoke</td>
+<td class="gt_row gt_right">10</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">The Weeknd</td>
+<td class="gt_row gt_right">13</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Justin Bieber</td>
+<td class="gt_row gt_right">11</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Tate McRae</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><th scope="row" class="gt_row gt_left gt_stub"></th>
+<td class="gt_row gt_left">Harry Styles</td>
+<td class="gt_row gt_right">18</td></tr>
+    <tr><td class="gt_row gt_left gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">total</td>
+<td class="gt_row gt_left gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">135.00</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Diez artistas con mas canciones entre las más populares</p>
+</div>
+</div>
+<p>Vemos que en total 135 canciones pertenecen a solo 10 artistas, esto representa un poco menos del 8% de las canciones, cuando en nuestra muestra de canciones populares hay 746 artistas, es decir, el 1.3% de los artistas con canciones mas escuchas tiene el 8% de canciones más populares. Por lo que el interprete podria ser fundamental para determinar la popularidad de una canción.</p>
+</section>
+<section id="anexo" class="level2">
+<h2 class="anchored" data-anchor-id="anexo">Anexo</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="jdixpfortx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#jdixpfortx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jdixpfortx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jdixpfortx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jdixpfortx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jdixpfortx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jdixpfortx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jdixpfortx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jdixpfortx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jdixpfortx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jdixpfortx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jdixpfortx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jdixpfortx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jdixpfortx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jdixpfortx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jdixpfortx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jdixpfortx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jdixpfortx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jdixpfortx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jdixpfortx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jdixpfortx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jdixpfortx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jdixpfortx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jdixpfortx .gt_left {
+  text-align: left;
+}
+
+#jdixpfortx .gt_center {
+  text-align: center;
+}
+
+#jdixpfortx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jdixpfortx .gt_font_normal {
+  font-weight: normal;
+}
+
+#jdixpfortx .gt_font_bold {
+  font-weight: bold;
+}
+
+#jdixpfortx .gt_font_italic {
+  font-style: italic;
+}
+
+#jdixpfortx .gt_super {
+  font-size: 65%;
+}
+
+#jdixpfortx .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#jdixpfortx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jdixpfortx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jdixpfortx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jdixpfortx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jdixpfortx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jdixpfortx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">valence</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">acousticness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">danceability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">duration_ms</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">energy</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">explicit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">instrumentalness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">key</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">liveness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">loudness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mode</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">popularity</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">speechiness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">tempo</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.028245108</td>
+<td class="gt_row gt_right">-0.18410103</td>
+<td class="gt_row gt_right">0.558946477</td>
+<td class="gt_row gt_right">-0.191812922</td>
+<td class="gt_row gt_right">0.35387598</td>
+<td class="gt_row gt_right">-0.018612579</td>
+<td class="gt_row gt_right">-0.19850097</td>
+<td class="gt_row gt_right">0.0284729415</td>
+<td class="gt_row gt_right">0.0038323579</td>
+<td class="gt_row gt_right">0.313511618</td>
+<td class="gt_row gt_right">0.015641155</td>
+<td class="gt_row gt_right">0.014200433</td>
+<td class="gt_row gt_right">0.04638098</td>
+<td class="gt_row gt_right">0.171688598</td></tr>
+    <tr><td class="gt_row gt_right">-0.028245108</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.61425007</td>
+<td class="gt_row gt_right">0.188515473</td>
+<td class="gt_row gt_right">0.079712699</td>
+<td class="gt_row gt_right">0.53027176</td>
+<td class="gt_row gt_right">0.220880522</td>
+<td class="gt_row gt_right">-0.27237097</td>
+<td class="gt_row gt_right">0.0075397018</td>
+<td class="gt_row gt_right">-0.0573182019</td>
+<td class="gt_row gt_right">0.487696883</td>
+<td class="gt_row gt_right">-0.032384856</td>
+<td class="gt_row gt_right">0.862442011</td>
+<td class="gt_row gt_right">-0.16781586</td>
+<td class="gt_row gt_right">0.141048057</td></tr>
+    <tr><td class="gt_row gt_right">-0.184101031</td>
+<td class="gt_row gt_right">-0.614250065</td>
+<td class="gt_row gt_right">1.00000000</td>
+<td class="gt_row gt_right">-0.266852104</td>
+<td class="gt_row gt_right">-0.076373233</td>
+<td class="gt_row gt_right">-0.74939299</td>
+<td class="gt_row gt_right">-0.246007469</td>
+<td class="gt_row gt_right">0.32981933</td>
+<td class="gt_row gt_right">-0.0205497594</td>
+<td class="gt_row gt_right">-0.0244824813</td>
+<td class="gt_row gt_right">-0.561696384</td>
+<td class="gt_row gt_right">0.047168265</td>
+<td class="gt_row gt_right">-0.573161775</td>
+<td class="gt_row gt_right">-0.04398032</td>
+<td class="gt_row gt_right">-0.207119692</td></tr>
+    <tr><td class="gt_row gt_right">0.558946477</td>
+<td class="gt_row gt_right">0.188515473</td>
+<td class="gt_row gt_right">-0.26685210</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.139937253</td>
+<td class="gt_row gt_right">0.22196694</td>
+<td class="gt_row gt_right">0.241756967</td>
+<td class="gt_row gt_right">-0.27806350</td>
+<td class="gt_row gt_right">0.0244385845</td>
+<td class="gt_row gt_right">-0.1001929907</td>
+<td class="gt_row gt_right">0.285056662</td>
+<td class="gt_row gt_right">-0.045955924</td>
+<td class="gt_row gt_right">0.199606165</td>
+<td class="gt_row gt_right">0.23549141</td>
+<td class="gt_row gt_right">0.001800602</td></tr>
+    <tr><td class="gt_row gt_right">-0.191812922</td>
+<td class="gt_row gt_right">0.079712699</td>
+<td class="gt_row gt_right">-0.07637323</td>
+<td class="gt_row gt_right">-0.139937253</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">0.04211868</td>
+<td class="gt_row gt_right">-0.048879810</td>
+<td class="gt_row gt_right">0.08477042</td>
+<td class="gt_row gt_right">-0.0042664776</td>
+<td class="gt_row gt_right">0.0471676119</td>
+<td class="gt_row gt_right">-0.003037038</td>
+<td class="gt_row gt_right">-0.046085027</td>
+<td class="gt_row gt_right">0.059596667</td>
+<td class="gt_row gt_right">-0.08460391</td>
+<td class="gt_row gt_right">-0.025472314</td></tr>
+    <tr><td class="gt_row gt_right">0.353875979</td>
+<td class="gt_row gt_right">0.530271762</td>
+<td class="gt_row gt_right">-0.74939299</td>
+<td class="gt_row gt_right">0.221966939</td>
+<td class="gt_row gt_right">0.042118684</td>
+<td class="gt_row gt_right">1.00000000</td>
+<td class="gt_row gt_right">0.132723406</td>
+<td class="gt_row gt_right">-0.28110144</td>
+<td class="gt_row gt_right">0.0277049362</td>
+<td class="gt_row gt_right">0.1261917677</td>
+<td class="gt_row gt_right">0.782361957</td>
+<td class="gt_row gt_right">-0.039259889</td>
+<td class="gt_row gt_right">0.485005040</td>
+<td class="gt_row gt_right">-0.07055488</td>
+<td class="gt_row gt_right">0.250865274</td></tr>
+    <tr><td class="gt_row gt_right">-0.018612579</td>
+<td class="gt_row gt_right">0.220880522</td>
+<td class="gt_row gt_right">-0.24600747</td>
+<td class="gt_row gt_right">0.241756967</td>
+<td class="gt_row gt_right">-0.048879810</td>
+<td class="gt_row gt_right">0.13272341</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.14098661</td>
+<td class="gt_row gt_right">0.0054319685</td>
+<td class="gt_row gt_right">0.0396397870</td>
+<td class="gt_row gt_right">0.140300022</td>
+<td class="gt_row gt_right">-0.078871628</td>
+<td class="gt_row gt_right">0.191542773</td>
+<td class="gt_row gt_right">0.41407048</td>
+<td class="gt_row gt_right">0.011969450</td></tr>
+    <tr><td class="gt_row gt_right">-0.198500967</td>
+<td class="gt_row gt_right">-0.272370970</td>
+<td class="gt_row gt_right">0.32981933</td>
+<td class="gt_row gt_right">-0.278063496</td>
+<td class="gt_row gt_right">0.084770418</td>
+<td class="gt_row gt_right">-0.28110144</td>
+<td class="gt_row gt_right">-0.140986614</td>
+<td class="gt_row gt_right">1.00000000</td>
+<td class="gt_row gt_right">-0.0145908018</td>
+<td class="gt_row gt_right">-0.0471926468</td>
+<td class="gt_row gt_right">-0.408611265</td>
+<td class="gt_row gt_right">-0.036542926</td>
+<td class="gt_row gt_right">-0.296750254</td>
+<td class="gt_row gt_right">-0.12169984</td>
+<td class="gt_row gt_right">-0.105361388</td></tr>
+    <tr><td class="gt_row gt_right">0.028472941</td>
+<td class="gt_row gt_right">0.007539702</td>
+<td class="gt_row gt_right">-0.02054976</td>
+<td class="gt_row gt_right">0.024438585</td>
+<td class="gt_row gt_right">-0.004266478</td>
+<td class="gt_row gt_right">0.02770494</td>
+<td class="gt_row gt_right">0.005431968</td>
+<td class="gt_row gt_right">-0.01459080</td>
+<td class="gt_row gt_right">1.0000000000</td>
+<td class="gt_row gt_right">0.0002054394</td>
+<td class="gt_row gt_right">0.017384982</td>
+<td class="gt_row gt_right">-0.116259608</td>
+<td class="gt_row gt_right">0.007825643</td>
+<td class="gt_row gt_right">0.02378404</td>
+<td class="gt_row gt_right">0.002628997</td></tr>
+    <tr><td class="gt_row gt_right">0.003832358</td>
+<td class="gt_row gt_right">-0.057318202</td>
+<td class="gt_row gt_right">-0.02448248</td>
+<td class="gt_row gt_right">-0.100192991</td>
+<td class="gt_row gt_right">0.047167612</td>
+<td class="gt_row gt_right">0.12619177</td>
+<td class="gt_row gt_right">0.039639787</td>
+<td class="gt_row gt_right">-0.04719265</td>
+<td class="gt_row gt_right">0.0002054394</td>
+<td class="gt_row gt_right">1.0000000000</td>
+<td class="gt_row gt_right">0.056421736</td>
+<td class="gt_row gt_right">0.002640718</td>
+<td class="gt_row gt_right">-0.076464075</td>
+<td class="gt_row gt_right">0.13466743</td>
+<td class="gt_row gt_right">0.007713504</td></tr>
+    <tr><td class="gt_row gt_right">0.313511618</td>
+<td class="gt_row gt_right">0.487696883</td>
+<td class="gt_row gt_right">-0.56169638</td>
+<td class="gt_row gt_right">0.285056662</td>
+<td class="gt_row gt_right">-0.003037038</td>
+<td class="gt_row gt_right">0.78236196</td>
+<td class="gt_row gt_right">0.140300022</td>
+<td class="gt_row gt_right">-0.40861126</td>
+<td class="gt_row gt_right">0.0173849820</td>
+<td class="gt_row gt_right">0.0564217365</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.010726940</td>
+<td class="gt_row gt_right">0.457050616</td>
+<td class="gt_row gt_right">-0.13929570</td>
+<td class="gt_row gt_right">0.209774456</td></tr>
+    <tr><td class="gt_row gt_right">0.015641155</td>
+<td class="gt_row gt_right">-0.032384856</td>
+<td class="gt_row gt_right">0.04716826</td>
+<td class="gt_row gt_right">-0.045955924</td>
+<td class="gt_row gt_right">-0.046085027</td>
+<td class="gt_row gt_right">-0.03925989</td>
+<td class="gt_row gt_right">-0.078871628</td>
+<td class="gt_row gt_right">-0.03654293</td>
+<td class="gt_row gt_right">-0.1162596076</td>
+<td class="gt_row gt_right">0.0026407179</td>
+<td class="gt_row gt_right">-0.010726940</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.028897057</td>
+<td class="gt_row gt_right">-0.05779607</td>
+<td class="gt_row gt_right">0.011636583</td></tr>
+    <tr><td class="gt_row gt_right">0.014200433</td>
+<td class="gt_row gt_right">0.862442011</td>
+<td class="gt_row gt_right">-0.57316177</td>
+<td class="gt_row gt_right">0.199606165</td>
+<td class="gt_row gt_right">0.059596667</td>
+<td class="gt_row gt_right">0.48500504</td>
+<td class="gt_row gt_right">0.191542773</td>
+<td class="gt_row gt_right">-0.29675025</td>
+<td class="gt_row gt_right">0.0078256426</td>
+<td class="gt_row gt_right">-0.0764640749</td>
+<td class="gt_row gt_right">0.457050616</td>
+<td class="gt_row gt_right">-0.028897057</td>
+<td class="gt_row gt_right">1.000000000</td>
+<td class="gt_row gt_right">-0.17197872</td>
+<td class="gt_row gt_right">0.133310155</td></tr>
+    <tr><td class="gt_row gt_right">0.046380979</td>
+<td class="gt_row gt_right">-0.167815864</td>
+<td class="gt_row gt_right">-0.04398032</td>
+<td class="gt_row gt_right">0.235491412</td>
+<td class="gt_row gt_right">-0.084603906</td>
+<td class="gt_row gt_right">-0.07055488</td>
+<td class="gt_row gt_right">0.414070481</td>
+<td class="gt_row gt_right">-0.12169984</td>
+<td class="gt_row gt_right">0.0237840433</td>
+<td class="gt_row gt_right">0.1346674299</td>
+<td class="gt_row gt_right">-0.139295703</td>
+<td class="gt_row gt_right">-0.057796072</td>
+<td class="gt_row gt_right">-0.171978718</td>
+<td class="gt_row gt_right">1.00000000</td>
+<td class="gt_row gt_right">-0.011523180</td></tr>
+    <tr><td class="gt_row gt_right">0.171688598</td>
+<td class="gt_row gt_right">0.141048057</td>
+<td class="gt_row gt_right">-0.20711969</td>
+<td class="gt_row gt_right">0.001800602</td>
+<td class="gt_row gt_right">-0.025472314</td>
+<td class="gt_row gt_right">0.25086527</td>
+<td class="gt_row gt_right">0.011969450</td>
+<td class="gt_row gt_right">-0.10536139</td>
+<td class="gt_row gt_right">0.0026289967</td>
+<td class="gt_row gt_right">0.0077135043</td>
+<td class="gt_row gt_right">0.209774456</td>
+<td class="gt_row gt_right">0.011636583</td>
+<td class="gt_row gt_right">0.133310155</td>
+<td class="gt_row gt_right">-0.01152318</td>
+<td class="gt_row gt_right">1.000000000</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Correlación entre todas las variables</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="cedyugorsr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cedyugorsr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cedyugorsr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cedyugorsr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cedyugorsr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cedyugorsr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cedyugorsr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cedyugorsr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cedyugorsr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cedyugorsr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cedyugorsr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cedyugorsr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cedyugorsr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cedyugorsr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cedyugorsr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cedyugorsr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cedyugorsr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cedyugorsr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cedyugorsr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cedyugorsr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cedyugorsr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cedyugorsr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cedyugorsr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cedyugorsr .gt_left {
+  text-align: left;
+}
+
+#cedyugorsr .gt_center {
+  text-align: center;
+}
+
+#cedyugorsr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cedyugorsr .gt_font_normal {
+  font-weight: normal;
+}
+
+#cedyugorsr .gt_font_bold {
+  font-weight: bold;
+}
+
+#cedyugorsr .gt_font_italic {
+  font-style: italic;
+}
+
+#cedyugorsr .gt_super {
+  font-size: 65%;
+}
+
+#cedyugorsr .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cedyugorsr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cedyugorsr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cedyugorsr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cedyugorsr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cedyugorsr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cedyugorsr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Correlación</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">valence</td>
+<td class="gt_row gt_right">0.02658905</td></tr>
+    <tr><td class="gt_row gt_left">year</td>
+<td class="gt_row gt_right">0.18034537</td></tr>
+    <tr><td class="gt_row gt_left">acousticness</td>
+<td class="gt_row gt_right">0.01784169</td></tr>
+    <tr><td class="gt_row gt_left">danceability</td>
+<td class="gt_row gt_right">0.10267409</td></tr>
+    <tr><td class="gt_row gt_left">duration_ms</td>
+<td class="gt_row gt_right">-0.10628878</td></tr>
+    <tr><td class="gt_row gt_left">energy</td>
+<td class="gt_row gt_right">-0.04059544</td></tr>
+    <tr><td class="gt_row gt_left">explicit</td>
+<td class="gt_row gt_right">0.04315726</td></tr>
+    <tr><td class="gt_row gt_left">instrumentalness</td>
+<td class="gt_row gt_right">-0.06240134</td></tr>
+    <tr><td class="gt_row gt_left">key</td>
+<td class="gt_row gt_right">-0.00220176</td></tr>
+    <tr><td class="gt_row gt_left">liveness</td>
+<td class="gt_row gt_right">-0.02566122</td></tr>
+    <tr><td class="gt_row gt_left">loudness</td>
+<td class="gt_row gt_right">0.04850468</td></tr>
+    <tr><td class="gt_row gt_left">mode</td>
+<td class="gt_row gt_right">-0.04113722</td></tr>
+    <tr><td class="gt_row gt_left">popularity</td>
+<td class="gt_row gt_right">1.00000000</td></tr>
+    <tr><td class="gt_row gt_left">speechiness</td>
+<td class="gt_row gt_right">0.05150200</td></tr>
+    <tr><td class="gt_row gt_left">tempo</td>
+<td class="gt_row gt_right">0.01013346</td></tr>
+    <tr><td class="gt_row gt_left">numero_de_artistas</td>
+<td class="gt_row gt_right">0.05064264</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Correlación Popularidad</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="nnwtneylsr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nnwtneylsr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nnwtneylsr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nnwtneylsr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nnwtneylsr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nnwtneylsr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nnwtneylsr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nnwtneylsr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nnwtneylsr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nnwtneylsr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nnwtneylsr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nnwtneylsr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nnwtneylsr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nnwtneylsr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nnwtneylsr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nnwtneylsr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nnwtneylsr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nnwtneylsr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nnwtneylsr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nnwtneylsr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nnwtneylsr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nnwtneylsr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nnwtneylsr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nnwtneylsr .gt_left {
+  text-align: left;
+}
+
+#nnwtneylsr .gt_center {
+  text-align: center;
+}
+
+#nnwtneylsr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nnwtneylsr .gt_font_normal {
+  font-weight: normal;
+}
+
+#nnwtneylsr .gt_font_bold {
+  font-weight: bold;
+}
+
+#nnwtneylsr .gt_font_italic {
+  font-style: italic;
+}
+
+#nnwtneylsr .gt_super {
+  font-size: 65%;
+}
+
+#nnwtneylsr .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#nnwtneylsr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nnwtneylsr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nnwtneylsr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nnwtneylsr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nnwtneylsr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nnwtneylsr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">valence</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">acousticness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">artists</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">danceability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">duration_ms</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">energy</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">explicit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">instrumentalness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">key</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">liveness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">loudness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mode</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">popularity</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">release_date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">speechiness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">tempo</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">0.145</td>
+<td class="gt_row gt_right">2020</td>
+<td class="gt_row gt_right">0.401</td>
+<td class="gt_row gt_left">['Bad Bunny', 'Jhay Cortez']</td>
+<td class="gt_row gt_right">0.731</td>
+<td class="gt_row gt_right">205090</td>
+<td class="gt_row gt_right">0.573</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_left">47EiUVwUp4C9fGccaPuUCS</td>
+<td class="gt_row gt_right">5.22e-05</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">0.113</td>
+<td class="gt_row gt_right">-10.059</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_left">Dakiti</td>
+<td class="gt_row gt_right">100</td>
+<td class="gt_row gt_right">2020-10-30</td>
+<td class="gt_row gt_right">0.0544</td>
+<td class="gt_row gt_right">109.928</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Cancion más popular</p>
+</div>
+</div>
+</section>
+<section id="referencias" class="level2">
+<h2 class="anchored" data-anchor-id="referencias">Referencias</h2>
+<p><span class="citation" data-cites="jazzand">(<a href="#ref-jazzand" role="doc-biblioref">Carney, s.&nbsp;f.</a>)</span></p>
+<p><span class="citation" data-cites="bello2021">(<a href="#ref-bello2021" role="doc-biblioref">Bello y Garcia 2021</a>)</span></p>
+<p><span class="citation" data-cites="magnusson2021">(<a href="#ref-magnusson2021" role="doc-biblioref">Magnusson 2021</a>)</span></p>
+<p><span class="citation" data-cites="littlewood2019">(<a href="#ref-littlewood2019" role="doc-biblioref">Littlewood 2019</a>)</span></p>
+<p><span class="citation" data-cites="yang2020">(<a href="#ref-yang2020" role="doc-biblioref">Yang 2020</a>)</span></p>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-bello2021" class="csl-entry" role="doc-biblioentry">
+Bello, Pablo, y David Garcia. 2021. <span>«Cultural Divergence in Popular Music: The Increasing Diversity of Music Consumption on Spotify Across Countries»</span>. <em>Humanities and Social Sciences Communications</em> 8 (1). <a href="https://doi.org/10.1057/s41599-021-00855-1">https://doi.org/10.1057/s41599-021-00855-1</a>.
+</div>
+<div id="ref-jazzand" class="csl-entry" role="doc-biblioentry">
+Carney, Courtney. s.&nbsp;f. <span>«Jazz and the cultural transformation of America in the 1920s»</span>. Tesis doctoral. <a href="https://doi.org/10.31390/gradschool_dissertations.176">https://doi.org/10.31390/gradschool_dissertations.176</a>.
+</div>
+<div id="ref-littlewood2019" class="csl-entry" role="doc-biblioentry">
+Littlewood, Mark. 2019. <span>«ROCKONOMICS: WHAT THE MUSIC INDUSTRY CAN TEACH US ABOUT ECONOMICS (AND OUR FUTURE). By Alan B.Krueger. John Murray (2019), 325 Pp. ISBN 978<span></span>1473667884 (Hb, £20.00)»</span>. <em>Economic Affairs</em> 39 (3): 445-46. <a href="https://doi.org/10.1111/ecaf.12375">https://doi.org/10.1111/ecaf.12375</a>.
+</div>
+<div id="ref-magnusson2021" class="csl-entry" role="doc-biblioentry">
+Magnusson, Thor. 2021. <span>«The Migration of Musical Instruments: On the Socio-Technological Conditions of Musical Evolution»</span>. <em>Journal of New Music Research</em> 50 (2): 175-83. <a href="https://doi.org/10.1080/09298215.2021.1907420">https://doi.org/10.1080/09298215.2021.1907420</a>.
+</div>
+<div id="ref-yang2020" class="csl-entry" role="doc-biblioentry">
+Yang, Yukun. 2020. <span>«<span>“</span>Musicalization of the Culture<span>”</span>: Is Music Becoming Louder, More Repetitive, Monotonous and Simpler?»</span> <em>Proceedings of the International AAAI Conference on Web and Social Media</em> 14 (mayo): 750-61. <a href="https://doi.org/10.1609/icwsm.v14i1.7340">https://doi.org/10.1609/icwsm.v14i1.7340</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

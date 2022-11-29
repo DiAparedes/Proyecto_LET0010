@@ -9,21 +9,22 @@ format:
     
 lang: es
 editor: visual
+bibliography: references.bib
 ---
 
 ## Introducción
-
-La música ha sido parte fundamental de la historia de la humanidad. "La música es una de las expresiones creativas más íntimas del ser, ya que forma parte del quehacer cotidiano de cualquier grupo humano tanto por su goce estético como por su carácter funcional y social. La música nos identifica como seres, como grupos y como cultura, tanto por las raíces identitarias como por la locación geográfica y épocas históricas." (Angel, Camus y Mansilla, 2008: 18).
 
 Desde que la existe la industria musical se han tratado de crear canciones que generen gran impacto en la sociedad, pues esto se podría traducir en beneficios monetarios en un periodo de tiempo cercano al estreno de la canción. Por esto puede ser importante para alguna empresa discográfica saber cómo hacer alguna canción exitosa, por lo tanto, podría ser relevante para estas compañías conocer cuales son las tendencias musicales, y los patrones que se repiten en las canciones que ya fueron exitosas.
 
 Para entender mejor como han sido las tendencias musicales de los últimos años haremos un análisis de una base de datos de "Spotify", con el fin de ver cuales son los factores que hacen que una canción sea popular, o que al menos aumentan las posibilidades de que lo sea.
 
-En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. En la segunda parte dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.
+En este informe tendremos cuatro secciones. La primera parte será para explicar cómo están clasificados los datos, y cuando fueron recolectados, pues la plataforma tiene canciones muy antiguas, mucho más que la plataforma de donde fueron sacados los datos. Luego dejaremos claro cuáles serán los métodos que usaremos para hacer en análisis. En la tercera parte haremos el análisis y mostraremos los resultados, a través de tablas y gráficos, enfocándonos principalmente en las reproducciones y su relación con las demás variables. Para finalizar, la cuarta parte será una conclusión, en la que clarificaremos cuales son las variables que más influyen en el posible éxito de una canción.
 
 ## Contexto
 
 La mayoria de las variables numéricas que miden aspectos tecnicos de una canción se obtuvieron por medio de algoritmos fueron hechos para medir este tipo de información.
+
+Las canciones que entran en esta base de datos datan desde 1921 hasta 2020.
 
 La variable `explicit` en "Spotify" se aplica a una canción que tiene:
 
@@ -53,7 +54,7 @@ Los datos corresponden a una base de datos de Spotify y fueron recogidos durante
 ```
 
 | Variable           | Tipo     | Descripción                                                                                                                                            |
-|------------------|------------------|-------------------------------------|
+|------------------|------------------|------------------------------------|
 | `name`             | caracter | Nombre de la canción                                                                                                                                   |
 | `id`               | caracter | ID de la canción en Spotify                                                                                                                            |
 | `artists`          | caracter | Nombre del/los interpretes                                                                                                                             |
@@ -79,7 +80,7 @@ Para trabajar usaremos aquellas variables que reflejen cierta tendencia, para ha
 Tambien se añadieron seis variables a las bases de datos a estudiar, que se presentan en la siguiente tabla:
 
 | Variable           | Tipo     | Descripcion                                                  |
-|--------------------|----------|--------------------------------------------------------------|
+|---------------|---------------|-------------------------------------------|
 | Popularidad        | caracter | La canción cumple con el requisito para considerarse popular |
 | artist_list        | lista    | Lista de interpretes                                         |
 | numero_de_artistas | numérica | Número de interpretes                                        |
@@ -88,6 +89,10 @@ Tambien se añadieron seis variables a las bases de datos a estudiar, que se pre
 | feat               | numérica | Si es una colaboración es 1, si no es 0                      |
 
 A pesar de que se crearon variables que podrian reemplazar como `duration_ms` y `artist` por `duration_s` y `artist_list` no se elimino ninguna variable original.
+
+Ademas se calculo la correlación entre las variables de la base de datos original ( @cor1 ) y una tabla que muestra solo la correlación entre popularity y las otras variables numéricas, en esta se incluyo el número de artistas ( @cor2 ) .
+
+Finalmente se incluyo una tabla que muestra la cancion más popular ( @can1 )
 
 ## Resultados
 
@@ -100,7 +105,7 @@ library(gt)
 library(gtsummary)
 library(gridExtra)
 
-
+canyncan=read_csv(here::here("datos/canycan.csv"))
 
 datos=read_csv(here::here("datos/data.csv"))
 
@@ -110,6 +115,7 @@ datos_a_estudiar1=read_csv(here::here("datos/datos_a_estudiar1.csv"))
 
 muestra_datos=read_csv(here::here("datos/muestra_datos.csv"))
 
+canmaspop=read_csv(here::here("datos/cancion_maspop.csv"))
 
 cantft=read_csv(here::here("datos/feat.csv"))
 
@@ -122,8 +128,14 @@ datosye=tapply(datos$explicit,datos$year,FUN = sum)
 
 datosye2=data.frame(seq(1921,2020),datosye)
 
+corvarn=read_csv(here::here("datos/cor_varn.csv"))
 
+cor_var=read_csv(here::here("datos/cor_var.csv"))
 ```
+
+Vamos a ver como se han comportado un par de aspectos que podrian responder a factores culturales que son la bailabilidad y el tipo de contenido que tienen las canciones, refiendonos a si este es explicito o no.
+
+Comenzamos por la bailabilidad que es algo que se podria asociar más a ciertos generos urbanos o a música latinoamerica, veamos el comportamiento de esta variable en la Figura 1:
 
 ```{r echo=FALSE}
 #| fig-cap: "Bailabilidad promedio por año"
@@ -134,13 +146,18 @@ grafby=datos_por_año %>%
   ggplot(aes(year,danceability))+
   geom_line(size=2,col="#1db954")+
   theme_bw()+
+  geom_vline(xintercept = 2011,linetype="dashed",color="black")+
   labs(
        x="Año",
-       y="Bailabilidad")
+       y="Bailabilidad")+
+    annotate("text", x = 2005, y = 0.6, label = "Año 2011")
+
 grafby
 ```
 
-Se ve que ha habido un incremento de la bailabilidad, mucho mayor que mas o menos del
+Se ve que ha habido un incremento de la bailabilidad, mucho mayor que el de tiempos anteriores a partir del 2011, que coincide con la epoca en la que se comenzaron a misificar los servicios de streaming de musica como Spotify, que ayudaron a la diversificación de estilos musicales, y la posterior masificación de estilos más bailables, como los estilos urbanos y latinos.
+
+En cuanto al tipo de contenido, explícito o no, podriamos pensar que cada vez las tematicas de las canciones tienden a ser más explicitas, miremos como ha ido evolucionando este fenomeno con el paso de los años con el paso del tiempo en la Figura 2:
 
 ```{r echo=FALSE}
 #| fig-cap: "Canciones explicitas por año"
@@ -157,6 +174,12 @@ grafico2=datosye2 %>%
        y="Cantidad de canciones")
 grafico2
 ```
+
+Es evidente que tiene un comportamiento extraño, a pesar de que en los últimos ha aumentado considerablemente, y es muy probable que los siga haciendo, entre los años 1925 y 1950 tiene un comportamiento erratico, y aunque en esos años hubo un auge de música negra, como el jazz y las tematicas politicas y sociales, que podrian asociarce a contenido explicito para Spotify, es curioso que luego de un corto vistaso a la base de datos, mucho del contenido explicito de aquellos años son canciones o poemas recitados de autores de la Unión Sovietica, y la aparentemente Spotify tambien considera ese tipo de temáticas como explicitas.
+
+Ahora vamos a ver como se han comportado aquellos aspectos más técnicos a la hora de hacer una canción, solo veremos los cambios en el tiempo de las variables que presentan cambios evidentes, que son la acusticidad, la instrumentalidad, la energia y el volumen, las otras variables no presentan alguna tendencia clara.
+
+Primero analicemos la acusticidad, es decir, que tan organico es el sonido de una pieza musical en la Figura 3:
 
 ```{r echo=FALSE}
 #| fig-cap: "Acusticidad promedio por año"
@@ -175,6 +198,10 @@ grafacy=datos_por_año %>%
 grafacy
 ```
 
+Es claro que hoy en dia los instrumentos "reales" cada vez se usan menos, principalmente por practicidad y presupuesto, pues los instrumentos reales son caros, y ocupan espacio, y obviamente hay que saber tocarlos, en cambio los instrumento digitales han ganado mucho terreno, practicamente desde su creación. Como vemos en el gráfico desde que se invento el primer sintetizador de música, la acusticidad de las canciones ha disminuidos considerablemente, y en los ultimos años se ve que va a seguir bajando.
+
+De la mano con el fenomeno ocurrido con la acusticidad, esta lo que ocurre con la instrumentalidad y podemos ver que hay una clara relación entre estas dos, pues comienzan a bajar de forma ininterrumpida, es claro al ver la Figura 4:
+
 ```{r echo=FALSE}
 #| fig-cap: "Instrumentalidad promedio por año"
 #| label: fig-intporaño
@@ -189,8 +216,12 @@ grafinty=datos_por_año %>%
 grafinty
 ```
 
+Lo que ocurre en este caso tiene que ver con la creación de instrumentos digitales, pues es más facil conseguir un sonido con un sintetizador, incluso hacer efectos de coro que disminuyen el uso de muchas voces o instrumentos reales
+
+De la misma forma que las dos variables analizadas anteriormente estaban relacionadad, las dos que analizaremos ahora tambien, estas son la energia y el volumen, como se hace evidente en la Figura 5 y la Figura 6:
+
 ```{r echo=FALSE}
-#| fig-cap: "Energia promedio por año"
+#| fig-cap: "Energía promedio por año"
 #| label: fig-engporaño
 
 
@@ -205,7 +236,25 @@ grafeny=datos_por_año %>%
 grafeny
 ```
 
-Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para ello veamos la Figura 2:
+```{r echo=FALSE}
+#| fig-cap: "Volumen promedio por año"
+#| label: fig-volporaño
+
+
+
+grafloy=datos_por_año %>% 
+  ggplot(aes(year,loudness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Volumen")
+grafloy
+```
+
+Este aumento en ambos aspectos se deben a que la mejor forma de hacer que una canción transmita mas energía es aumentando el volumen, esto es muy importante para nuestro análisis, ya que la música con mayor volumen llama más la atención que aquella con volumen más bajo.
+
+Es evidente que hay canciones que no sirven, en primera instancia, para el estudio que queremos hacer, por lo tanto, si queremos maximizar las probabilidades de que el producto sea exitoso debemos ver cuales son los que han llegado al resultado que estamos buscando, para esto nos vamos a basar en un dato entregado por Alan B.Krueger, un economista e invetigador de la industria musical, que es el equivalente al 1% de los productos musicales son los que más exito tienen, en base a este dato, se decidio buscar en qué valor de la variable `popularity` estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada., para ello veamos la Figura 7:
 
 ```{r echo=FALSE}
 #| fig-cap: "Canciones populares y no populares"
@@ -223,19 +272,15 @@ grafico1=ggplot(data = datos)+
 grafico1
 ```
 
-Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor sobre 75 en el indice de popularidad, y a simple vista se ve que la cantidad de obras que llegan a este número son muy pocas y que de hecho la mayoria de las canciones, se quedan cerca del 0.
-
-decir que es el equivalente al 1% de los artistas, que según un diario se llego a que este es el porcentaje de interpretes que se lleva la mayor proporcion de las ganancias en la industrial musical, en base a este dato, se decidio buscar en qué valor de la variable `popularity` estaba el percentil 99, se encontro que el 1% corresponde a un 76 en la variable antes mencionada.
+Vemos que si el requisito mínimo para considerar una canción exitosa, es que tenga un valor igual o superior a 76 en el indice de popularidad, es evidente la mayoria de las canciones tienen una popularidad moderada, y un gran grupo no tiene una popularidad igual a 0.
 
 Con la idea de ver cuales son las variables qué más influyen en la popularidad de una canción se ajustó un modelo de regresión lineal (anexo), a partir del cual se llego a que los aspectos que más afectan a la popularidad de una canción son, en orden descendente, la duranción, la bailabilidad, la instrumentalidad, la energia, el volumen y el número de interpretes.
 
 Por lo tanto, vamos a ver como se comportan las variables asociadas a los aspectos antes mencionados, en el 1% más popular y lo compararemos con una muestra aleatoria de igual tamaño de la base de datos completa, para ver cuales son las diferencias entre las canciones más populares y el resto de estas.
 
-## Resultados
+A partir de ahora todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.
 
-En este apartado todos los gráficos de color verde corresponden al aquellas canciones que tiene un 76 o más en el indice de popularidad, las grises son aquellas que pertenecen a la muestra de la base de datos completa.
-
-Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura #:
+Como se dijo, respecto al modelo de regresión, el aspecto más relevante es la duración de la canción, entonces, veamos como se concentran en la Figura 8:
 
 ```{r echo=FALSE}
 #| fig-cap: "Duranción en segundos de canciones populares y muestra de las otras canciones"
@@ -261,7 +306,7 @@ graf4=grid.arrange(grafico4,grafico42,ncol=2)
 
 Vemos que las canciones mas populares concentran su duranción en torno a los 200 segundos, unos 3 minutos y medio, pero suelen alejarce de manera mas "controlada", en cambio a nivel general, a pesar de la duración esta concentrada practicamente en el mismo rango de segundos, llegando incluso a que la proporción de canciones que duran casi lo mismo es más o menos el doble, la duración de las canciones se va de manera mas agresiva hacia los extremos, de hecho hay varias piezas que se acercan a la media hora de duración.
 
-La siguiente variable es la bailabilidad, que como vimos antes ha ido en incremento---
+La siguiente variable es la bailabilidad, que como vimos antes en la @fig-baiporaño ha ido en incrementando cada vez más con el paso del tiempo, ahora en la Figura 9 veamos como distribuye la bailabilidad:
 
 ```{r echo=FALSE}
 #| fig-cap: "Bailabilidad de canciones populares y muestra de las otras canciones"
@@ -289,6 +334,8 @@ grid.arrange(grafico5,grafico52,ncol=2)
 
 La distribución es casi la misma, tal vez hay una leve inclinación hacia el 1, maýor bailabilidad, en las canciones mas populares, junto con esto, tambien podemos ver que casi no hay canciones con menos de un 0.25, pero ademas de eso, las diferencias son practicamente inexistente.
 
+Anteriormente en la @fig-intporaño vimos que la instrumentalidad ha disminuido considerablemente en con el paso del tiempo, veamos que pasa si comparamos esta variable en las canciones populares y en el resto de canciones en la Figura 10:
+
 ```{r echo=FALSE}
 #| fig-cap: "Instrumentalidad de canciones populares y muestra de las otras canciones"
 #| label: fig-canciones-pop-inst
@@ -315,7 +362,9 @@ grid.arrange(grafico6,grafico62,ncol=2)
 
 ```
 
-Nuevamente vemos una diferencia minima,
+Nuevamente vemos una diferencia minima, y a pesar de que este valor ha disminuido con el paso de los años, no ha sido una caracteristica de la música ser muy instrumental, al menos en el periodo de tiempo que abarcan los datos.
+
+La energía fue uno de los aspectos que más aporto información al momento de ser añadida al modelo de regresión, asi tambien fue una de las cosas que más han aumentado en la música, como se vio en la @fig-engporaño, ahora veamos que tan diferente es la energía en las canciones segun su popularidad en la Figura 11:
 
 ```{r echo=FALSE}
 #| fig-cap: "Energia de canciones populares y muestra de las otras canciones"
@@ -342,6 +391,10 @@ grafico72=ggplot(data=muestra_datos)+
 grid.arrange(grafico7,grafico72,ncol=2)
 ```
 
+Tal como lo indicaba el modelo de regresión, si, la energía si es determinate cuando de popularidad se trata, la diferencia es clara, las canciones de la muestra aleatoria de la base de datos completa distribuye de manera más uniforme, incluso con valores más cercanos a una baja energia, en cambio las canciones populares claramente se inclinan hacia una energía, no extrema, pero si alta.
+
+Con el volumen ocurrio casi lo mismo que con la energía, tanto en el modelo de regresión, y en su comportamiento en el tiempo (ver @fig-volporaño ), veamos la Figura 12:
+
 ```{r echo=FALSE}
 #| fig-cap: "Volumen de canciones populares y muestra de las otras canciones"
 #| label: fig-canciones-pop-loud
@@ -365,8 +418,12 @@ grid.arrange(grafico8,grafico82,ncol=2)
 
 ```
 
+Si bien no hay tanta diferencia entre las muestras como en el caso de la energía, si hay diferencian claras, la más evidente es que el volumen, asi como la energía se concentra en valores más altos, y a pesar de que distribuyen de manera simila, se podria decir que la variabilidad en las canciones más populares es menor.
+
+Los dos aspectos siguientes son el número de artistas y si son o no una colaboración, donde practicamente uno nace del otro, por no decir que son casi lo mismo, pero es el punto pues nos gustaria analizar estos aspecto en conjuntos, los podemos ver en la Figura 13 y la Figura 14:
+
 ```{r echo=FALSE}
-#| fig-cap: "Volumen de canciones populares y muestra de las otras canciones"
+#| fig-cap: "Numero de artistas de canciones populares y muestra de las otras canciones"
 #| label: fig-canciones-pop-Numart
 
 
@@ -414,3 +471,68 @@ grafico102=ggplot(data=cantftM,aes(x=name,y=value))+
 
 grid.arrange(grafico10,grafico102,ncol=2)
 ```
+
+En la Figura 14 vemos que alrededor de un tercio de las canciones más populares corresponden a colaboraciones, mientras que en las canciones de nuestra muestra aleatoria más o menos un cuarto de las canciones son colaboraciones, lo que resulta llamativo es que al ver la Figura 13 las canciones de la muestra aleatoria son las que llegan a un número más elevado de interpretes, cuando las canciones populares raramente superan los dos interpretes.
+
+El último aspecto a consderar estan los artistas/interpretes de las canciones, para eso vamos a ver quiénes son las diez personas con mas canciones entre las más populares, para esto veamos la Figura 15:
+
+```{r echo=FALSE}
+#| fig-cap: "Diez artistas con mas canciones entre las más populares"
+#| label: top10
+
+canyncan %>% 
+  gt() %>% 
+  summary_rows(
+    columns = numero_de_canciones,
+    fns = list(total="sum")
+  ) %>% 
+  cols_label(
+    mainartist="Artista",
+    numero_de_canciones="Cantidad de canciones"
+  )
+
+```
+
+Vemos que en total 135 canciones pertenecen a solo 10 artistas, esto representa un poco menos del 8% de las canciones, cuando en nuestra muestra de canciones populares hay 746 artistas, es decir, el 1.3% de los artistas con canciones mas escuchas tiene el 8% de canciones más populares. Por lo que el interprete podria ser fundamental para determinar la popularidad de una canción.
+
+## Anexo
+
+```{r echo=FALSE}
+#| fig-cap: "Correlación entre todas las variables"
+#| label: cor1
+
+
+corvarn %>% 
+  gt()
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Correlación Popularidad"
+#| label: cor2
+
+cor_var %>% 
+  gt()
+
+```
+
+```{r echo=FALSE}
+#| fig-cap: "Cancion más popular"
+#| label: can1
+
+canmaspop %>% 
+  gt()
+
+```
+
+## Referencias
+
+[@jazzand]
+
+[@bello2021]
+
+[@magnusson2021]
+
+[@littlewood2019]
+
+[@yang2020]
