@@ -8,6 +8,7 @@ format:
     toc-location: left
     fig-cap-location: top
     code-tools: true
+    theme: cosmo
 lang: es
 editor: visual
 bibliography: references.bib
