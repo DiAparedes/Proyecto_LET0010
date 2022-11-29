@@ -32,12 +32,14 @@ a
 datos$Popularidad=ifelse(datos$popularity >76, "Popular","No Popular")
 grafico1=ggplot(data = datos)+
   geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
-  labs(title="Número de canciones según su popularidad",
+  labs(
        x="Popularidad", y="Número de Canciones")+
   scale_fill_manual(values = c("#b3b3b3", "#1db954"))+
   theme_bw()+
   geom_vline(xintercept = 76,linetype="dashed",color="black")+
   annotate("text", x = 87, y = 25000, label = "Canciones a estudiar")
+
+
 
 #codigo grafico 2
 
@@ -49,10 +51,10 @@ datosye=tapply(datos$explicit,datos$year,FUN = sum)
 datosye2=data.frame(seq(1921,2020),datosye)
 
 grafico2=datosye2 %>% 
-  ggplot(aes(datosye2$seq.1921..2020.,datosye2$datosye))+
+  ggplot(aes(seq.1921..2020.,datosye))+
   geom_line(size=2,col="#1db954" )+
   theme_bw()+
-  labs(title="Canciones con letras explicitas por año",
+  labs(
        x="Año",
        y="Cantidad de canciones")
 
@@ -151,7 +153,7 @@ grid.arrange(grafico4,grafico42,ncol=2)
 grafico5=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=danceability),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Bailabilidad de canciones populares",
+  labs(
        x="Bailabilidad",
        y="Cantidad de canciones")
 
@@ -160,7 +162,7 @@ grafico5=ggplot(data=datos_a_estudiar1)+
 grafico52=ggplot(data=muestra_datos)+
   geom_histogram(aes(x=danceability),col= "black",fill="#b3b3b3")+
   theme_bw()+
-  labs(title="Bailabilidad de canciones no populares",
+  labs(
        x="Bailabilidad",
        y="Cantidad de canciones")
 
@@ -174,7 +176,7 @@ grid.arrange(grafico5,grafico52,ncol=2)
 grafico6=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=instrumentalness),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Instrumentalidad de canciones populares",
+  labs(
        x="Instrumentalidad",
        y="Cantidad de canciones")
 
@@ -183,7 +185,7 @@ grafico6=ggplot(data=datos_a_estudiar1)+
 grafico62=ggplot(data=muestra_datos)+
   geom_histogram(aes(x=instrumentalness),col= "black",fill="#b3b3b3")+
   theme_bw()+
-  labs(title="Instrumentalidad de canciones no populares",
+  labs(
        x="Instrumentalidad",
        y="Cantidad de canciones")
 
@@ -198,7 +200,7 @@ grid.arrange(grafico6,grafico62,ncol=2)
 grafico7=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=energy),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Energia de canciones populares",
+  labs(
        x="Energia",
        y="Cantidad de canciones")
 
@@ -209,7 +211,7 @@ grafico7=ggplot(data=datos_a_estudiar1)+
 grafico72=ggplot(data=muestra_datos)+
   geom_histogram(aes(x=energy),col= "black",fill="#b3b3b3")+
   theme_bw()+  
-  labs(title="Energia de canciones no populares",
+  labs(
                     x="Energia",
                     y="Cantidad de canciones")
 
@@ -224,38 +226,38 @@ grid.arrange(grafico7,grafico72,ncol=2)
 grafico8=ggplot(data=datos_a_estudiar1)+
   geom_histogram(aes(x=loudness),col= "black",fill="#1db954")+
   theme_bw()+
-  labs(title="Volumen de canciones populares",
+  labs(
        x="volumen",
        y="Cantidad de canciones")
 
 grafico82=ggplot(data=muestra_datos)+
   geom_histogram(aes(x=loudness),col= "black",fill="#b3b3b3")+
   theme_bw()+
-  labs(title="Volumen de canciones no populares",
+  labs(
        x="Volumen",
        y="Cantidad de canciones")
 
 grid.arrange(grafico8,grafico82,ncol=2)
 
 ####
-####nart  2
+####
 ####
 
 grafico9=ggplot(data=datos_a_estudiar1)+
-  geom_histogram(aes(x=numero_de_artistas),col= "black",fill="#1db954")+
+  geom_histogram(aes(x=numero_de_artistas),col= "black",fill="#1db954", bins=30)+
   theme_bw()+
   labs(
-       x="Numero de artistas",
-       y="Cantidad de canciones")+
+    x="Numero de artistas",
+    y="Cantidad de canciones")
 
 
 
 grafico92=ggplot(data=muestra_datos)+
-  geom_histogram(aes(x=numero_de_artista_muestra),col= "black",fill="#b3b3b3")+
+  geom_histogram(aes(x=numero_de_artista_muestra),col= "black",fill="#b3b3b3", bins=30)+
   theme_bw()+
   labs(
-       x="Numero de artistas",
-       y="Cantidad de canciones")
+    x="Numero de artistas",
+    y="Cantidad de canciones")
 
 grid.arrange(grafico9,grafico92,ncol=2)
 
@@ -283,6 +285,7 @@ grafico102=ggplot(data=cantftM,aes(x=name,y=value))+
   labs(x="Tipo de canción",
        y="Cantidad de canciones")
 
+grid.arrange(grafico10,grafico102,ncol=2)
 ###
 
 
@@ -361,8 +364,8 @@ cor_var %>%#al anexo
 which(datos$popularity==100)
 #valores cancion mas popular
 cancion_mas_popular=datos[19612,]
-dakiti=data.frame(cancion_mas_popular)[,-20]
-
+dakiti=data.frame(cancion_mas_popular)[,c(-20,-21)]
+write_csv(dakiti,"datos/cancion_maspop.csv")
 
 dakiti %>%
   gt()
@@ -397,6 +400,8 @@ mas11=datos_a_estudiar1 %>%
 mas12=unique(mas11[23])
 mas13=sapply(mas12,head,n=10)
 
+unique(datos_a_estudiar1$mainartist)
+
 numero_de_canciones=c()
 
 for(i in 1:10){
@@ -407,15 +412,20 @@ numero_de_canciones=c(numero_de_canciones,length(which(datos_a_estudiar1$mainart
 
 
 canyncan=data.frame(mas13,numero_de_canciones)
+write_csv(canyncan,"datos/canycan.csv")
 canyncan %>% 
   gt() %>% 
   summary_rows(
     columns = numero_de_canciones,
     fns = list(total="sum")
+  ) %>% 
+  cols_label(
+    mainartist="Artista",
+    numero_de_canciones="Cantidad de canciones"
   )
 
 
-
+135/1736
 
 
 

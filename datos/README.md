@@ -1,2 +1,1 @@
-Los datos que usaremos en este proyecto fueron sacados de <https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset?resource=download>.
-Principalmente usaremos las bases de datos "data.csv", "data_by_genres.csv" y "data_by_year.csv".
+Los datos que usaremos en este proyecto fueron sacados de <https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset?resource=download>. Principalmente usaremos las bases de datos `data.csv` y `data_by_year.csv`, a partir de estos generaremos nuevas variables y bases de datos.
