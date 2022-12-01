@@ -1,0 +1,70 @@
+/*-- scss:defaults --*/
+
+// fuentes tipográficas
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+$font-family-sans-serif: 'Kanit', sans-serif;
+$font-family: 'Noto Sans Mono', monospace;
+
+
+// color
+
+
+$verde: #1db954 !default;
+$negro: #121212 !default;
+$blanco: #ffffff !default;
+
+
+
+/*-- scss:rules --*/
+
+/* combinaciones colores presentación */
+
+.reveal .fondo-verde {
+  background-color: #1db954;
+  color: #121212;
+}
+
+.reveal .fondo-gris {
+  background-color: #97a1aa;
+  color: $blanco;
+}
+
+
+/* alineación texto*/
+
+.centrado {
+  text-align: center;
+}
+
+.justificado {
+  text-align: justify;
+}
+
+.a-la-derecha {
+  text-align: right;
+}
+
+
+/* tamaños fuentes */
+
+.ultra-grande {
+  font-size: 3.0em;
+}
+
+.grande {
+  font-size: 2.5em;
+}
+
+.pequenio {
+  font-size: 0.75em;
+}
+
+
+/* color barra de navegación */
+
+.nav-link .active {
+  color: #7769F7;
+}
