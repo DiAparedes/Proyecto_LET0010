@@ -1,0 +1,256 @@
+---
+title: "¿Qué hace exitosa a una canción?"
+author: "Diego Paredes"
+format: 
+  revealjs:
+    theme: ejemplo-estilos.scss
+lang: es
+---
+
+```{r include=FALSE}
+#| echo: false
+#| message: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(here)
+library(gt)
+library(gtsummary)
+library(gridExtra)
+library(tidyverse)
+```
+
+
+```{r include=FALSE}
+#| echo: false
+#| message: false
+#| cache: true
+canyncan=read_csv(here::here("datos/canycan.csv"))
+
+datos=read_csv(here::here("datos/data.csv"))
+
+datos_por_año=read_csv(here::here("datos/data_by_year.csv"))
+
+datos_a_estudiar1=read_csv(here::here("datos/datos_a_estudiar1.csv"))
+
+muestra_datos=read_csv(here::here("datos/muestra_datos.csv"))
+
+canmaspop=read_csv(here::here("datos/cancion_maspop.csv"))
+
+cantft=read_csv(here::here("datos/feat.csv"))
+
+cantftM=read_csv(here::here("datos/featM.csv"))
+
+datosye=data.frame(datos$year,datos$explicit)
+
+
+datosye=tapply(datos$explicit,datos$year,FUN = sum)
+
+datosye2=data.frame(seq(1921,2020),datosye)
+
+corvarn=read_csv(here::here("datos/cor_varn.csv"))
+
+cor_var=read_csv(here::here("datos/cor_var.csv"))
+
+```
+
+## ¿Qué aspectos influyen en la popularidad de una canción? 
+
+-   Se usaron dos métodos se vieron las tendencias de aquellas variables que presentaban tendencias evidentes.
+
+-   Se vio que aspectos eran los que más información aportaban.
+
+## Crecimiento en Bailabilidad y Cantidad de canciones explicitas
+
+```{r}
+grid.arrange(
+datos_por_año %>% 
+  ggplot(aes(year,danceability))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+       x="Año",
+       y="Bailabilidad")
+,
+datosye2 %>% 
+  ggplot(aes(seq.1921..2020.,datosye))+
+  geom_line(size=2,col="#1db954" )+
+  theme_bw()+
+  labs(
+       x="Año",
+       y="Cantidad de canciones explicitas")
+,ncol=2)
+```
+
+## Bajan la Acusticidad y la Instrumentalidad
+```{r}
+grid.arrange(datos_por_año %>% 
+  ggplot(aes(year,acousticness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  geom_vline(xintercept = 1951.5,linetype="dashed",color="black")+
+  labs(
+    x="Año",
+    y="Acusticidad(Naturalidad del sonido)")+
+  annotate("text", x = 1970, y = 0.95, label = "Creación primer sintetizador de música")
+  
+,
+datos_por_año %>% 
+  ggplot(aes(year,instrumentalness))+
+  geom_line(size=2,col="#1db954")+
+  theme_bw()+
+  labs(
+    x="Año",
+    y="Instrumentalidad")
+
+,ncol=2
+)
+```
+
+## Suben la Energía y el Volumen
+
+```{r}
+grid.arrange(
+  grafeny=datos_por_año %>% 
+    ggplot(aes(year,energy))+
+    geom_line(size=2,col="#1db954")+
+    theme_bw()+
+    labs(
+      x="Año",
+      y="Energía")
+  ,
+  grafloy=datos_por_año %>% 
+    ggplot(aes(year,loudness))+
+    geom_line(size=2,col="#1db954")+
+    theme_bw()+
+    labs(
+      x="Año",
+      y="Volumen")
+  ,ncol=2)
+```
+
+
+# {background-color="#1db954"}
+
+:::{.grande}
+[¿Cuándo una canción es exitosa?]{style="color: black"}
+:::
+
+
+["El 1% de la industria se lleva alrededor del 60% de las ganancias”(Krueger, A. 2019. _Rockonomist_ ).]{style="color: black"}
+
+
+
+---
+```{r}
+datos$Popularidad=ifelse(datos$popularity >76, "Popular","No Popular")
+ggplot(data = datos)+
+  geom_histogram(aes(x=datos$popularity, fill=Popularidad),bins = 30)+
+  labs(
+    x="Popularidad", y="Número de Canciones")+
+  scale_fill_manual(values = c("#b3b3b3", "#1db954"))+
+  theme_bw()+
+  geom_vline(xintercept = 74.1,linetype="dashed",color="black")+
+  annotate("text", x = 87, y = 25000, label = "Canciones a estudiar")
+
+```
+
+
+## Selección de variables importantes
+
+-   Duración
+
+-   Bailabilidad
+
+-   Instrumentalidad
+
+-   Energía
+
+-   Volumen
+
+-   Cantidad de interpretes
+
+## Solo la Energía distribuye de manera diferente
+
+```{r}
+grid.arrange(ggplot(data=datos_a_estudiar1)+
+               geom_histogram(aes(x=energy),col= "black",fill="#1db954")+
+               theme_bw()+
+               labs(
+                 x="Energia",
+                 y="Cantidad de canciones")
+             ,
+             
+             ggplot(data=muestra_datos)+
+               geom_histogram(aes(x=energy),col= "black",fill="#b3b3b3")+
+               theme_bw()+  
+               labs(
+                 x="Energia",
+                 y="Cantidad de canciones")
+             ,ncol=2)
+```
+
+
+## ¿Quien tiene más canciones populares?
+
+```{r}
+canyncan %>% 
+  add_row(mainartist="Total",numero_de_canciones=135) %>% 
+  gt() %>%
+  cols_label(
+    mainartist="Artista",
+    numero_de_canciones="Cantidad de canciones") %>% 
+  tab_style(style = cell_text(weight = "bold"),
+            locations = cells_body(columns = c(mainartist,numero_de_canciones),
+                                   rows=numero_de_canciones>134)) 
+
+
+```
+
+
+## {background-color="#1db954"}
+
+:::{.ultra-grande}
+[Conclusiones]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   Cierto grado bailabilidad]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   Algo de contenido explicito]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   No ser demasiado compleja]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   Un nivel elevado de energía]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   Un interprete Famoso]{style="color: black"}
+:::
+
+## {background-color="#1db954"}
+
+:::{.ultra-grande}
+[Proyecciones]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   Un aumento del contenido explicito y la bailabilidad]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   La producción de una canción va a ser aun más simple]{style="color: black"}
+:::
+
+:::{.fragment}
+[-   El volumen no deberia aumentar demasiado]{style="color: black"}
+:::
+
+
